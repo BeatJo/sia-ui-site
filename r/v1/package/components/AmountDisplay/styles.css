@@ -1,0 +1,9 @@
+.sia-amount-display { display:inline-grid; gap:.15rem; }
+.sia-amount-display strong { font-variant-numeric:tabular-nums; }
+.sia-amount-display__label,.sia-amount-display__secondary { color:var(--sia-muted); font-size:.8rem; }
+.sia-amount-display--neutral strong { color:var(--sia-foreground); }
+.sia-amount-display--primary strong { color:var(--sia-primary); }
+.sia-amount-display--info strong { color:var(--sia-info); }
+.sia-amount-display--success strong { color:var(--sia-success); }
+.sia-amount-display--warning strong { color:var(--sia-warning); }
+.sia-amount-display--danger strong { color:var(--sia-danger); }

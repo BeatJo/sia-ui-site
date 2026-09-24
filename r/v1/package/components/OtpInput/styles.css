@@ -1,0 +1,2 @@
+.sia-otp-input { display:flex; gap:.5rem; }
+.sia-otp-input input { width:2.75rem; height:3rem; border:1px solid var(--sia-border); border-radius:var(--sia-radius); color:var(--sia-foreground); background:var(--sia-background); font:inherit; font-size:1.25rem; text-align:center; }

@@ -1,0 +1,33 @@
+import{r as c,j as n}from"./iframe-DQyRSC8n.js";import{c as E}from"./classname-nB6WhpaV.js";import{u as F}from"./config-BUwt5-xE.js";import{I as P}from"./index-BvKA8DNz.js";import"./preload-helper-PPVm8Dsz.js";import"./index-Ce4u6n81.js";const k=[{code:"CM",dial:"+237",label:"Cameroun",flag:"🇨🇲",digits:9,groups:[1,2,2,2,2]},{code:"CI",dial:"+225",label:"Côte d'Ivoire",flag:"🇨🇮",digits:10,groups:[2,2,2,2,2]},{code:"SN",dial:"+221",label:"Sénégal",flag:"🇸🇳",digits:9,groups:[2,3,2,2]},{code:"GA",dial:"+241",label:"Gabon",flag:"🇬🇦",digits:8,groups:[2,2,2,2]},{code:"CG",dial:"+242",label:"Congo",flag:"🇨🇬",digits:9,groups:[2,3,2,2]},{code:"CD",dial:"+243",label:"RD Congo",flag:"🇨🇩",digits:9,groups:[3,3,3]},{code:"BF",dial:"+226",label:"Burkina Faso",flag:"🇧🇫",digits:8,groups:[2,2,2,2]},{code:"ML",dial:"+223",label:"Mali",flag:"🇲🇱",digits:8,groups:[2,2,2,2]},{code:"BJ",dial:"+229",label:"Bénin",flag:"🇧🇯",digits:10,groups:[2,2,2,2,2]},{code:"TG",dial:"+228",label:"Togo",flag:"🇹🇬",digits:8,groups:[2,2,2,2]},{code:"TD",dial:"+235",label:"Tchad",flag:"🇹🇩",digits:8,groups:[2,2,2,2]},{code:"FR",dial:"+33",label:"France",flag:"🇫🇷",digits:9,groups:[1,2,2,2,2]},{code:"BE",dial:"+32",label:"Belgique",flag:"🇧🇪",digits:9,groups:[3,2,2,2]},{code:"CA",dial:"+1",label:"Canada",flag:"🇨🇦",digits:10,groups:[3,3,4]}];function T(s){return s.replace(/\D/g,"")}function M(s,t){if(!t||t.length===0)return s;const o=[];let e=s;for(const u of t){if(!e)break;o.push(e.slice(0,u)),e=e.slice(u)}return e&&o.push(e),o.join(" ")}function A(s,t){return[...t].sort((o,e)=>e.dial.length-o.dial.length).find(o=>s.startsWith(o.dial))}const C=c.forwardRef(({value:s,defaultValue:t="",onValueChange:o,countries:e=k,defaultCountry:u,lockCountry:I=!1,disabled:b,className:S,..._},x)=>{const B=F(),h=s!==void 0,[j,q]=c.useState(t),r=h?s:j,f=e.find(a=>a.code===u)??e[0],[y,N]=c.useState(f.code),l=c.useMemo(()=>A(r,e)??e.find(a=>a.code===y)??f,[e,f,y,r]),m=r.startsWith(l.dial)?r.slice(l.dial.length):T(r),v=a=>{h||q(a),o?.(a)};return n.jsx(P,{..._,ref:x,type:"tel",inputMode:"tel",autoComplete:"tel-national",className:E("sia-phone__field",S),disabled:b,value:M(m,l.groups),...l.digits?{maxLength:l.digits+8}:{},onChange:a=>{let i=T(a.target.value);l.digits&&(i=i.slice(0,l.digits)),v(i?`${l.dial}${i}`:"")},left:n.jsxs("span",{className:"sia-phone__country",children:[n.jsx("span",{className:"sia-phone__flag","aria-hidden":"true",children:l.flag}),n.jsx("span",{className:"sia-phone__dial",children:l.dial}),!I&&n.jsx("select",{className:"sia-phone__select","aria-label":B.countryCode,value:l.code,disabled:b,onChange:a=>{const i=e.find(V=>V.code===a.target.value);i&&(N(i.code),v(m?`${i.dial}${m}`:""))},children:e.map(a=>n.jsxs("option",{value:a.code,children:[a.flag," ",a.label," (",a.dial,")"]},a.code))})]})})});C.displayName="PhoneInput";C.__docgenInfo={description:`Un numéro de téléphone international.
+
+L'indicatif et le numéro national sont deux champs distincts, parce qu'une
+seule zone de saisie oblige à taper le \`+237\` à chaque fois — ce que
+personne ne fait, d'où des numéros enregistrés sans indicatif.
+
+Aucune validation réelle n'est tentée : \`libphonenumber-js\` fait cela bien,
+pèse 145 ko, et se branche par-dessus si un projet en a besoin. Ici, le
+découpage visuel et la forme E.164 en sortie.`,methods:[],displayName:"PhoneInput",props:{value:{required:!1,tsType:{name:"string"},description:"Le numéro complet, indicatif compris : `+237612345678`."},defaultValue:{required:!1,tsType:{name:"string"},description:"",defaultValue:{value:'""',computed:!1}},onValueChange:{required:!1,tsType:{name:"signature",type:"function",raw:"(value: string) => void",signature:{arguments:[{type:{name:"string"},name:"value"}],return:{name:"void"}}},description:"Reçoit toujours la forme E.164, sans espaces."},countries:{required:!1,tsType:{name:"Array",elements:[{name:"PhoneCountry"}],raw:"PhoneCountry[]"},description:"",defaultValue:{value:`[
+  { code: "CM", dial: "+237", label: "Cameroun", flag: "🇨🇲", digits: 9, groups: [1, 2, 2, 2, 2] },
+  { code: "CI", dial: "+225", label: "Côte d'Ivoire", flag: "🇨🇮", digits: 10, groups: [2, 2, 2, 2, 2] },
+  { code: "SN", dial: "+221", label: "Sénégal", flag: "🇸🇳", digits: 9, groups: [2, 3, 2, 2] },
+  { code: "GA", dial: "+241", label: "Gabon", flag: "🇬🇦", digits: 8, groups: [2, 2, 2, 2] },
+  { code: "CG", dial: "+242", label: "Congo", flag: "🇨🇬", digits: 9, groups: [2, 3, 2, 2] },
+  { code: "CD", dial: "+243", label: "RD Congo", flag: "🇨🇩", digits: 9, groups: [3, 3, 3] },
+  { code: "BF", dial: "+226", label: "Burkina Faso", flag: "🇧🇫", digits: 8, groups: [2, 2, 2, 2] },
+  { code: "ML", dial: "+223", label: "Mali", flag: "🇲🇱", digits: 8, groups: [2, 2, 2, 2] },
+  { code: "BJ", dial: "+229", label: "Bénin", flag: "🇧🇯", digits: 10, groups: [2, 2, 2, 2, 2] },
+  { code: "TG", dial: "+228", label: "Togo", flag: "🇹🇬", digits: 8, groups: [2, 2, 2, 2] },
+  { code: "TD", dial: "+235", label: "Tchad", flag: "🇹🇩", digits: 8, groups: [2, 2, 2, 2] },
+  { code: "FR", dial: "+33", label: "France", flag: "🇫🇷", digits: 9, groups: [1, 2, 2, 2, 2] },
+  { code: "BE", dial: "+32", label: "Belgique", flag: "🇧🇪", digits: 9, groups: [3, 2, 2, 2] },
+  { code: "CA", dial: "+1", label: "Canada", flag: "🇨🇦", digits: 10, groups: [3, 3, 4] },
+]`,computed:!1}},defaultCountry:{required:!1,tsType:{name:"string"},description:"Pays présélectionné, par code ISO."},lockCountry:{required:!1,tsType:{name:"boolean"},description:"Verrouille le pays et masque le sélecteur.",defaultValue:{value:"false",computed:!1}}},composes:["Omit"]};const w={title:"Saisie/PhoneInput",component:C,tags:["autodocs"],args:{defaultValue:"+237612345678",defaultCountry:"CM",lockCountry:!1},argTypes:{defaultCountry:{control:"select",options:["CM","CI","SN","GA","BF","FR","BE","CA"]}},parameters:{layout:"padded"}},g={},d={args:{defaultValue:"",defaultCountry:"SN"}},p={args:{lockCountry:!0}};g.parameters={...g.parameters,docs:{...g.parameters?.docs,source:{originalSource:"{}",...g.parameters?.docs?.source}}};d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`{
+  args: {
+    defaultValue: "",
+    defaultCountry: "SN"
+  }
+}`,...d.parameters?.docs?.source},description:{story:"La sortie est toujours en E.164 ; le découpage n'est qu'une aide à la lecture.",...d.parameters?.docs?.description}}};p.parameters={...p.parameters,docs:{...p.parameters?.docs,source:{originalSource:`{
+  args: {
+    lockCountry: true
+  }
+}`,...p.parameters?.docs?.source}}};const U=["Playground","Vide","PaysVerrouille"];export{p as PaysVerrouille,g as Playground,d as Vide,U as __namedExportsOrder,w as default};

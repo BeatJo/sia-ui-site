@@ -1,0 +1,5 @@
+import{r as n,j as s}from"./iframe-DQyRSC8n.js";import{c as o}from"./classname-nB6WhpaV.js";const a=n.forwardRef(({className:t,invalid:e,resize:r="vertical",...i},l)=>s.jsx("textarea",{ref:l,className:o("sia-textarea",e&&"sia-textarea--invalid",`sia-textarea--resize-${r}`,t),"aria-invalid":e||void 0,...i}));a.displayName="Textarea";a.__docgenInfo={description:`La saisie de plusieurs lignes.
+
+Elle garde la hauteur qu'on lui donne : un redimensionnement automatique
+fait sauter la page à chaque retour à la ligne, et déplace ce qu'on
+s'apprêtait à cliquer.`,methods:[],displayName:"Textarea",props:{invalid:{required:!1,tsType:{name:"boolean"},description:""},resize:{required:!1,tsType:{name:"union",raw:'"none" | "vertical" | "horizontal" | "both"',elements:[{name:"literal",value:'"none"'},{name:"literal",value:'"vertical"'},{name:"literal",value:'"horizontal"'},{name:"literal",value:'"both"'}]},description:"",defaultValue:{value:'"vertical"',computed:!1}}},composes:["TextareaHTMLAttributes"]};export{a as T};

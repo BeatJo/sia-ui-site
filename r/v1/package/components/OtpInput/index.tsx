@@ -1,0 +1,12 @@
+import { useRef, useState, type ClipboardEvent, type KeyboardEvent } from "react";
+import { cn } from "@sia-ui/utils";
+import "./styles.css";
+export interface OtpInputProps { id?: string; value?: string; defaultValue?: string; onValueChange?: (value: string) => void; length?: number; inputMode?: "numeric" | "text"; mask?: boolean; disabled?: boolean; className?: string; "aria-describedby"?: string; "aria-labelledby"?: string; "aria-invalid"?: boolean; "aria-required"?: boolean; }
+/**
+ * Un code à usage unique, chiffre par chiffre.
+ *
+ * Le collage d'un code entier remplit toutes les cases d'un coup : c'est
+ * ainsi qu'on le récupère d'un SMS, et le forcer à être retapé serait une
+ * punition pour rien.
+ */
+export function OtpInput({ id, value, defaultValue = "", onValueChange, length = 6, inputMode = "numeric", mask, disabled, className, ...ariaProps }: OtpInputProps) { const [internal, setInternal] = useState(defaultValue); const refs = useRef<Array<HTMLInputElement | null>>([]); const current = (value ?? internal).padEnd(length, " ").slice(0, length).split(""); const update = (chars: string[]) => { const next = chars.join("").trimEnd(); if (value === undefined) setInternal(next); onValueChange?.(next); }; const accept = (text: string) => inputMode === "numeric" ? text.replace(/\D/g, "") : text; const paste = (event: ClipboardEvent<HTMLDivElement>) => { event.preventDefault(); const next = accept(event.clipboardData.getData("text")).slice(0, length).padEnd(length, " ").split(""); update(next); refs.current[Math.min(next.join("").trimEnd().length, length - 1)]?.focus(); }; return <div id={id} className={cn("sia-otp-input", className)} onPaste={paste} {...ariaProps}>{current.map((char, index) => <input key={index} ref={(node) => { refs.current[index] = node; }} value={char.trim()} type={mask ? "password" : "text"} inputMode={inputMode} maxLength={1} disabled={disabled} aria-label={`Caractère ${index + 1}`} onChange={(event) => { const next = [...current]; next[index] = accept(event.target.value).slice(-1) || " "; update(next); if (next[index]?.trim()) refs.current[index + 1]?.focus(); }} onKeyDown={(event: KeyboardEvent<HTMLInputElement>) => { if (event.key === "Backspace" && !current[index]?.trim()) refs.current[index - 1]?.focus(); if (event.key === "ArrowLeft") refs.current[index - 1]?.focus(); if (event.key === "ArrowRight") refs.current[index + 1]?.focus(); }} />)}</div>; }

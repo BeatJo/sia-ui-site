@@ -1,0 +1,13 @@
+.sia-require-session { display: contents; }
+
+/* Pendant la vérification, la place est tenue plutôt que laissée vide : une
+   page qui se remplit d'un coup après un écran blanc se lit comme un
+   rechargement, pas comme un chargement. */
+.sia-require-session__pending {
+  display: grid;
+  place-items: center;
+  min-height: 12rem;
+  padding: 2rem;
+  color: var(--sia-muted);
+  animation: sia-fade-in var(--sia-duration-base) var(--sia-easing-standard);
+}

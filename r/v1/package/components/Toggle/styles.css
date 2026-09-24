@@ -1,0 +1,124 @@
+.sia-toggle {
+  --sia-toggle-color: var(--sia-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  border: 1px solid transparent;
+  border-radius: var(--sia-radius);
+  background: transparent;
+  color: var(--sia-muted);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background-color var(--sia-duration-fast) var(--sia-easing-standard),
+    border-color var(--sia-duration-fast) var(--sia-easing-standard),
+    color var(--sia-duration-fast) var(--sia-easing-standard),
+    transform var(--sia-duration-instant) var(--sia-easing-standard);
+}
+.sia-toggle:active:not(:disabled) { transform: scale(.96); }
+.sia-toggle:disabled { opacity: .5; cursor: not-allowed; }
+
+.sia-toggle--sm { padding: .25rem .5rem; font-size: .8rem; }
+.sia-toggle--md { padding: .4rem .7rem; font-size: .875rem; }
+.sia-toggle--lg { padding: .55rem .9rem; font-size: .95rem; }
+
+.sia-toggle__icon { display: grid; place-items: center; font-size: 1.05em; }
+
+.sia-toggle--ghost:hover:not(:disabled) { background: var(--sia-surface); color: var(--sia-foreground); }
+.sia-toggle--outline { border-color: var(--sia-border); }
+.sia-toggle--outline:hover:not(:disabled) { border-color: var(--sia-border-strong); color: var(--sia-foreground); }
+.sia-toggle--solid { background: var(--sia-surface); color: var(--sia-foreground); }
+
+.sia-toggle[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--sia-toggle-color) 12%, transparent);
+  border-color: color-mix(in srgb, var(--sia-toggle-color) 30%, transparent);
+  color: var(--sia-toggle-color);
+}
+.sia-toggle--solid[aria-pressed="true"] {
+  background: var(--sia-toggle-color);
+  border-color: var(--sia-toggle-color);
+  color: var(--sia-primary-foreground);
+}
+/* L'icône marque le basculement d'un rebond court : le contraste seul se voit
+   mal sur un bouton de barre d'outils. */
+.sia-toggle[aria-pressed="true"] .sia-toggle__icon {
+  animation: sia-toggle-pop var(--sia-duration-base) var(--sia-easing-spring);
+}
+@keyframes sia-toggle-pop {
+  0% { transform: scale(.8); }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.sia-toggle--neutral { --sia-toggle-color: var(--sia-foreground); }
+.sia-toggle--primary { --sia-toggle-color: var(--sia-primary); }
+.sia-toggle--info { --sia-toggle-color: var(--sia-info); }
+.sia-toggle--success { --sia-toggle-color: var(--sia-success); }
+.sia-toggle--warning { --sia-toggle-color: var(--sia-warning); }
+.sia-toggle--danger { --sia-toggle-color: var(--sia-danger); }
+
+/* ── Groupe ────────────────────────────────────────────────────────────── */
+
+.sia-toggle-group {
+  --sia-toggle-color: var(--sia-primary);
+  display: inline-flex;
+  padding: .2rem;
+  border: 1px solid var(--sia-border);
+  border-radius: calc(var(--sia-radius) + 2px);
+  background: var(--sia-surface);
+}
+
+.sia-toggle-group__item {
+  position: relative;
+  /* La pastille se dessine en `z-index: -1`; sans contexte d'empilement
+     propre elle passerait derrière le fond du groupe. */
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  border: 0;
+  border-radius: var(--sia-radius);
+  background: transparent;
+  color: var(--sia-muted);
+  font: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color var(--sia-duration-fast) var(--sia-easing-standard);
+}
+.sia-toggle-group__item:hover:not(:disabled) { color: var(--sia-foreground); }
+.sia-toggle-group__item:disabled { opacity: .45; cursor: not-allowed; }
+
+.sia-toggle-group--sm .sia-toggle-group__item { padding: .25rem .55rem; font-size: .8rem; }
+.sia-toggle-group--md .sia-toggle-group__item { padding: .4rem .75rem; font-size: .875rem; }
+.sia-toggle-group--lg .sia-toggle-group__item { padding: .55rem .95rem; font-size: .95rem; }
+
+/* La pastille est un fond posé derrière le texte, pas un changement de
+   couleur du bouton : elle peut ainsi se dessiner en grandissant. */
+.sia-toggle-group__item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--sia-surface-raised);
+  box-shadow: var(--sia-elevation-rest);
+  opacity: 0;
+  transform: scale(.9);
+  transition:
+    opacity var(--sia-duration-base) var(--sia-easing-standard),
+    transform var(--sia-duration-base) var(--sia-easing-spring);
+}
+.sia-toggle-group__item[data-selected] {
+  color: var(--sia-toggle-color);
+  font-weight: 600;
+}
+.sia-toggle-group__item[data-selected]::before { opacity: 1; transform: none; }
+
+.sia-toggle-group__icon { display: grid; place-items: center; font-size: 1.05em; }
+
+.sia-toggle-group--neutral { --sia-toggle-color: var(--sia-foreground); }
+.sia-toggle-group--primary { --sia-toggle-color: var(--sia-primary); }
+.sia-toggle-group--info { --sia-toggle-color: var(--sia-info); }
+.sia-toggle-group--success { --sia-toggle-color: var(--sia-success); }
+.sia-toggle-group--warning { --sia-toggle-color: var(--sia-warning); }
+.sia-toggle-group--danger { --sia-toggle-color: var(--sia-danger); }

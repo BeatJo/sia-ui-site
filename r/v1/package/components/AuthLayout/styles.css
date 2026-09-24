@@ -1,0 +1,6 @@
+.sia-auth-layout { min-height:32rem; display:grid; grid-template-columns:1fr 1fr; background:var(--sia-surface); }
+.sia-auth-layout > aside { padding:3rem; color:var(--sia-primary-foreground); background:var(--sia-primary); }
+.sia-auth-layout > section { display:grid; place-items:center; padding:2rem; }
+.sia-auth-layout__card { width:min(100%,26rem); display:grid; gap:1.25rem; }
+.sia-auth-layout h1 { margin:0; }
+.sia-auth-layout header p { color:var(--sia-muted); }

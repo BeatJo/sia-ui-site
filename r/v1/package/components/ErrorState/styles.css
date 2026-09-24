@@ -1,0 +1,6 @@
+.sia-error-state { display:grid; place-items:center; gap:.75rem; min-height:14rem; padding:2rem; text-align:center; border:1px solid color-mix(in srgb,var(--sia-danger) 35%,var(--sia-border)); border-radius:calc(var(--sia-radius) * 1.25); background:color-mix(in srgb,var(--sia-danger) 5%,var(--sia-background)); }
+.sia-error-state--compact { min-height:8rem; padding:1.25rem; }
+.sia-error-state__icon { display:grid; place-items:center; width:3rem; height:3rem; border-radius:50%; color:#fff; background:var(--sia-danger); font-weight:800; }
+.sia-error-state__title { color:var(--sia-foreground); }
+.sia-error-state__description { max-width:32rem; margin:0; color:var(--sia-muted); line-height:1.5; }
+.sia-error-state__actions { display:flex; gap:.75rem; flex-wrap:wrap; justify-content:center; }

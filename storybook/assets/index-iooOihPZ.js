@@ -1,0 +1,5 @@
+import{j as n}from"./iframe-DQyRSC8n.js";import{c as d}from"./classname-nB6WhpaV.js";function u({className:r,width:s="100%",height:i="1rem",radius:t,circle:e,style:a,...o}){return n.jsx("div",{className:d("sia-skeleton",e&&"sia-skeleton--circle",r),"aria-hidden":"true",style:{width:s,height:i,borderRadius:e?"9999px":t,...a},...o})}u.__docgenInfo={description:`La forme de ce qui n'est pas encore là.
+
+Aux dimensions du contenu attendu, et non d'une taille générique : c'est
+ce qui évite le sursaut de mise en page à l'arrivée des données, lequel
+fait cliquer à côté.`,methods:[],displayName:"Skeleton",props:{width:{required:!1,tsType:{name:'CSSProperties["width"]',raw:'CSSProperties["width"]'},description:"",defaultValue:{value:'"100%"',computed:!1}},height:{required:!1,tsType:{name:'CSSProperties["height"]',raw:'CSSProperties["height"]'},description:"",defaultValue:{value:'"1rem"',computed:!1}},radius:{required:!1,tsType:{name:'CSSProperties["borderRadius"]',raw:'CSSProperties["borderRadius"]'},description:""},circle:{required:!1,tsType:{name:"boolean"},description:""}},composes:["HTMLAttributes"]};export{u as S};

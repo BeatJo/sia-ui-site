@@ -1,0 +1,2 @@
+.sia-skeleton { display:block; max-width:100%; border-radius:var(--sia-radius); background:linear-gradient(90deg,var(--sia-border),color-mix(in srgb,var(--sia-border) 45%,var(--sia-background)),var(--sia-border)); background-size:200% 100%; animation:sia-skeleton 1.4s ease-in-out infinite; }
+.sia-skeleton--circle { aspect-ratio:1; }

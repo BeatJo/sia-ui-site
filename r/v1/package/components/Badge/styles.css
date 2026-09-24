@@ -1,0 +1,26 @@
+.sia-badge { display:inline-flex; align-items:center; min-height:1.5rem; padding:0 .55rem; border:1px solid transparent; border-radius:9999px; font-size:.75rem; font-weight:700; line-height:1; }
+.sia-badge--soft.sia-badge--neutral { color:var(--sia-foreground); background:var(--sia-border); }
+.sia-badge--soft.sia-badge--primary { color:var(--sia-primary); background:color-mix(in srgb,var(--sia-primary) 12%,transparent); }
+.sia-badge--soft.sia-badge--success { color:var(--sia-success); background:color-mix(in srgb,var(--sia-success) 12%,transparent); }
+.sia-badge--soft.sia-badge--warning { color:var(--sia-warning); background:color-mix(in srgb,var(--sia-warning) 12%,transparent); }
+.sia-badge--soft.sia-badge--danger { color:var(--sia-danger); background:color-mix(in srgb,var(--sia-danger) 12%,transparent); }
+.sia-badge--solid.sia-badge--neutral { color:var(--sia-background); background:var(--sia-foreground); }
+.sia-badge--solid.sia-badge--primary { color:var(--sia-primary-foreground); background:var(--sia-primary); }
+.sia-badge--solid.sia-badge--success { color:#fff; background:var(--sia-success); }
+.sia-badge--solid.sia-badge--warning { color:#fff; background:var(--sia-warning); }
+.sia-badge--solid.sia-badge--danger { color:#fff; background:var(--sia-danger); }
+.sia-badge--outline { border-color:currentColor; background:transparent; }
+.sia-badge--outline.sia-badge--primary { color:var(--sia-primary); }
+.sia-badge--outline.sia-badge--success { color:var(--sia-success); }
+.sia-badge--outline.sia-badge--warning { color:var(--sia-warning); }
+.sia-badge--outline.sia-badge--danger { color:var(--sia-danger); }
+.sia-badge__left,.sia-badge__right { display:inline-flex; align-items:center; justify-content:center; flex:none; }
+.sia-badge__left { margin-right:.35rem; }
+.sia-badge__right { margin-left:.35rem; }
+.sia-badge__content { min-width:0; }
+.sia-badge--loading { cursor:progress; }
+/* ComponentTone completeness for components created before the shared contract. */
+.sia-badge--soft.sia-badge--info { color:var(--sia-info); background:color-mix(in srgb,var(--sia-info) 12%,transparent); }
+.sia-badge--solid.sia-badge--info { color:#fff; background:var(--sia-info); }
+.sia-badge--outline.sia-badge--neutral { color:var(--sia-muted); }
+.sia-badge--outline.sia-badge--info { color:var(--sia-info); }

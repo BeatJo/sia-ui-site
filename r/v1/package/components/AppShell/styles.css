@@ -1,0 +1,259 @@
+/**
+ * La coquille.
+ *
+ * Deux variables portent les largeurs — `--sia-shell-sidebar` et
+ * `--sia-shell-rail` — et l'appelant peut les redéfinir en ligne. La grille
+ * les lit sans jamais les coder en dur : changer la largeur ne demande donc
+ * pas de toucher au composant.
+ */
+
+.sia-shell {
+  --sia-shell-sidebar: 16rem;
+  --sia-shell-rail: 4rem;
+  --sia-shell-header: 3.5rem;
+  --sia-shell-tabs: 4rem;
+
+  display: grid;
+  grid-template-columns: var(--sia-shell-sidebar) minmax(0, 1fr);
+  min-height: 100%;
+  background: var(--sia-background);
+  color: var(--sia-foreground);
+  transition: grid-template-columns var(--sia-duration-base) var(--sia-easing-standard);
+}
+
+.sia-shell--rail { grid-template-columns: var(--sia-shell-rail) minmax(0, 1fr); }
+.sia-shell--hidden,
+.sia-shell--compact { grid-template-columns: minmax(0, 1fr); }
+
+/* Posée à droite, la barre passe en seconde colonne : l'ordre du DOM ne
+   change pas, donc l'ordre de lecture au clavier non plus. */
+.sia-shell--right { grid-template-columns: minmax(0, 1fr) var(--sia-shell-sidebar); }
+.sia-shell--right.sia-shell--rail { grid-template-columns: minmax(0, 1fr) var(--sia-shell-rail); }
+.sia-shell--right .sia-shell__aside { order: 2; }
+
+.sia-shell__aside {
+  min-width: 0;
+  height: 100vh;
+  /* Collée : le contenu défile, la navigation reste. Sans cela, revenir en
+     haut d'une longue liste devient un préalable à tout déplacement. */
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  border-right: 1px solid var(--sia-border);
+  background: var(--sia-surface);
+}
+.sia-shell--right .sia-shell__aside {
+  border-right: 0;
+  border-left: 1px solid var(--sia-border);
+}
+
+.sia-shell--filled .sia-shell__aside { background: var(--sia-surface-raised, var(--sia-surface)); }
+
+/* La barre flottante se détache de son bord : la coquille lui rend la marge
+   que le composant seul ne peut pas prendre. */
+.sia-shell--floating .sia-shell__aside {
+  border: 0;
+  background: transparent;
+  padding: .5rem;
+}
+
+.sia-shell__main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 100vh;
+}
+
+/* ── L'en-tête ──────────────────────────────────────────────────────────── */
+
+.sia-shell__header {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex: none;
+  min-height: var(--sia-shell-header);
+  padding: .5rem 1rem;
+  border-bottom: 1px solid var(--sia-border);
+  background: color-mix(in srgb, var(--sia-background) 88%, transparent);
+}
+
+/* Le titre d'écran et l'identité servent de repère pendant le défilement.
+   `backdrop-filter` n'est posé qu'ici, où il couvre une bande étroite : sur
+   une grande surface il coûte une couche de composition à chaque image. */
+.sia-shell__header--sticky {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(8px);
+}
+
+.sia-shell__header-content {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.sia-shell__toggle {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 0;
+  border-radius: var(--sia-radius);
+  background: transparent;
+  color: var(--sia-muted);
+  cursor: pointer;
+  transition:
+    background-color var(--sia-duration-fast) var(--sia-easing-standard),
+    color var(--sia-duration-fast) var(--sia-easing-standard);
+}
+.sia-shell__toggle:hover { background: var(--sia-surface); color: var(--sia-foreground); }
+.sia-shell__toggle:focus-visible {
+  outline: 2px solid var(--sia-primary);
+  outline-offset: 2px;
+}
+
+/* ── Le contenu ─────────────────────────────────────────────────────────── */
+
+.sia-shell__content {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  margin-inline: auto;
+  padding: 1.25rem 1rem 2rem;
+}
+
+/* Assez large pour deux colonnes de cartes, assez borné pour qu'une ligne de
+   texte reste lisible. */
+.sia-shell__content--wide { max-width: 87.5rem; }
+/* Pour un écran qui n'est qu'un formulaire. */
+.sia-shell__content--narrow { max-width: 48rem; }
+/* Pour un tableau qui a besoin de toute la place. */
+.sia-shell__content--full { max-width: none; }
+
+.sia-shell__page { margin-bottom: 1.25rem; }
+
+.sia-shell__footer {
+  flex: none;
+  padding: 1rem;
+  border-top: 1px solid var(--sia-border);
+  color: var(--sia-muted);
+  font-size: .85rem;
+}
+
+/* ── Petit écran ────────────────────────────────────────────────────────── */
+
+.sia-shell--compact .sia-shell__content { padding-inline: .875rem; }
+
+/* La barre d'onglets couvre le bas : sans cette réserve, la dernière ligne
+   d'un tableau reste inatteignable. */
+.sia-shell--with-tabs .sia-shell__main {
+  padding-bottom: calc(var(--sia-shell-tabs) + env(safe-area-inset-bottom, 0px));
+}
+
+.sia-shell__drawer .sia-sidebar { height: 100%; }
+
+/* ── La barre d'onglets ─────────────────────────────────────────────────── */
+
+/* `sia-bottom-tabs` et non `sia-tabs` : ce dernier appartient au composant
+   `Tabs`, dont la première règle est `display: grid`. La collision jouait
+   dans les deux sens — mes onglets héritaient de sa grille, et mes règles
+   fixaient ses onglets en bas de l'écran. */
+
+.sia-bottom-tabs {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 30;
+  display: flex;
+  align-items: stretch;
+  height: var(--sia-shell-tabs);
+  /* La barre d'accueil des téléphones sans bouton mange le bas de l'écran. */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  border-top: 1px solid var(--sia-border);
+  background: color-mix(in srgb, var(--sia-background) 92%, transparent);
+  backdrop-filter: blur(12px);
+}
+
+.sia-bottom-tabs__cell { display: contents; }
+
+.sia-bottom-tabs__item {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .15rem;
+  min-width: 0;
+  padding: .25rem .25rem .3rem;
+  border: 0;
+  background: transparent;
+  color: var(--sia-muted);
+  font: inherit;
+  font-size: .68rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--sia-duration-fast) var(--sia-easing-standard);
+}
+
+/**
+ * L'onglet actif reçoit une pastille qui grandit sous l'icône.
+ *
+ * Une simple bascule de couleur passe inaperçue sur un téléphone tenu à bout
+ * de bras ; un changement de forme, non.
+ */
+.sia-bottom-tabs__pastille {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 1.75rem;
+  border-radius: 999px;
+  background: transparent;
+  font-size: 1.1rem;
+  transform: scale(.9);
+  transition:
+    background-color var(--sia-duration-base) var(--sia-easing-spring),
+    transform var(--sia-duration-base) var(--sia-easing-spring);
+}
+
+.sia-bottom-tabs__item--active { color: var(--sia-primary); }
+.sia-bottom-tabs__item--active .sia-bottom-tabs__pastille {
+  background: color-mix(in srgb, var(--sia-primary) 14%, transparent);
+  transform: scale(1);
+}
+
+.sia-bottom-tabs__label {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Le compte exact ne tient pas sous une icône d'onglet : il devient un point,
+   comme sur le rail. */
+.sia-bottom-tabs__point {
+  position: absolute;
+  top: .05rem;
+  right: .65rem;
+  width: .4rem;
+  height: .4rem;
+  border-radius: 50%;
+  background: var(--sia-danger);
+  box-shadow: 0 0 0 2px var(--sia-background);
+}
+
+.sia-bottom-tabs__item:focus-visible {
+  outline: 2px solid var(--sia-primary);
+  outline-offset: -3px;
+  border-radius: var(--sia-radius);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sia-shell,
+  .sia-bottom-tabs__pastille { transition: none; }
+}

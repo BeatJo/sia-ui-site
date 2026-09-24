@@ -1,0 +1,2 @@
+.sia-reference-select__option { display:grid; }
+.sia-reference-select__option small { color:var(--sia-muted); }

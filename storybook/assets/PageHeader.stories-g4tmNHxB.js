@@ -1,0 +1,5 @@
+import{j as t}from"./iframe-DQyRSC8n.js";import{B as e}from"./index-u74Kvn0L.js";import{P as a}from"./index-BoT5b4sV.js";import"./preload-helper-PPVm8Dsz.js";import"./classname-nB6WhpaV.js";import"./index-Ce4u6n81.js";import"./config-BUwt5-xE.js";import"./index-DUXvzsQk.js";import"./geometry-Dzgyg8gY.js";import"./index-542shROb.js";import"./index-D7Pt3lB-.js";const v={title:"Patterns/PageHeader",component:a,tags:["autodocs"],args:{eyebrow:"Administration",title:"Utilisateurs",description:"Gérez les accès et invitations de votre organisation."},parameters:{layout:"padded"}},r={},o={args:{actions:t.jsxs(t.Fragment,{children:[t.jsx(e,{variant:"outline",children:"Exporter"}),t.jsx(e,{children:"Inviter"})]})}};r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:"{}",...r.parameters?.docs?.source}}};o.parameters={...o.parameters,docs:{...o.parameters?.docs,source:{originalSource:`{
+  args: {
+    actions: <><Button variant="outline">Exporter</Button><Button>Inviter</Button></>
+  }
+}`,...o.parameters?.docs?.source}}};const B=["Playground","WithActions"];export{r as Playground,o as WithActions,B as __namedExportsOrder,v as default};

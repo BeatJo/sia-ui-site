@@ -1,0 +1,6 @@
+import{j as r}from"./iframe-DQyRSC8n.js";import{I as i}from"./index-Cw6XIjhI.js";import{T as m}from"./index-DUXvzsQk.js";import"./preload-helper-PPVm8Dsz.js";import"./classname-nB6WhpaV.js";import"./config-BUwt5-xE.js";import"./geometry-Dzgyg8gY.js";import"./index-542shROb.js";import"./index-D7Pt3lB-.js";function p({content:e,placement:a,variant:n,tone:s}){return r.jsx(m,{content:e,placement:a,variant:n,tone:s,children:r.jsx(i,{label:"Informations",icon:"?",variant:"outline"})})}const j={title:"Retour/Tooltip",component:p,tags:["autodocs"],args:{content:"Informations complémentaires",placement:"top",variant:"solid",tone:"neutral"},argTypes:{placement:{control:"select",options:["top","right","bottom","left"]}},parameters:{layout:"centered"}},o={},t={args:{variant:"outline",tone:"primary"}};o.parameters={...o.parameters,docs:{...o.parameters?.docs,source:{originalSource:"{}",...o.parameters?.docs?.source}}};t.parameters={...t.parameters,docs:{...t.parameters?.docs,source:{originalSource:`{
+  args: {
+    variant: "outline",
+    tone: "primary"
+  }
+}`,...t.parameters?.docs?.source}}};const v=["Playground","Outline"];export{t as Outline,o as Playground,v as __namedExportsOrder,j as default};

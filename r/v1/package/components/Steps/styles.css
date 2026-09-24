@@ -1,0 +1,138 @@
+.sia-steps {
+  --sia-step-size: 2rem;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: sia-step;
+}
+.sia-steps--sm { --sia-step-size: 1.5rem; font-size: .8rem; }
+
+.sia-steps__item { display: flex; min-width: 0; }
+.sia-steps__marker { position: relative; display: flex; flex: none; }
+
+.sia-steps__bullet {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: var(--sia-step-size);
+  height: var(--sia-step-size);
+  border: 2px solid var(--sia-border-strong);
+  border-radius: 999px;
+  background: var(--sia-surface-raised);
+  color: var(--sia-muted);
+  font-size: .8rem;
+  font-weight: 600;
+  transition:
+    border-color var(--sia-duration-base) var(--sia-easing-standard),
+    background-color var(--sia-duration-base) var(--sia-easing-standard),
+    color var(--sia-duration-base) var(--sia-easing-standard);
+}
+.sia-steps__number { font-variant-numeric: tabular-nums; line-height: 1; }
+
+.sia-steps__item[data-status="done"] .sia-steps__bullet {
+  border-color: var(--sia-success);
+  background: var(--sia-success);
+  color: #fff;
+  /* La coche tombe avec un léger rebond quand l'étape bascule. */
+  animation: sia-step-done var(--sia-duration-slow) var(--sia-easing-spring);
+}
+@keyframes sia-step-done {
+  0% { transform: scale(.7); }
+  60% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+.sia-steps__item[data-status="current"] .sia-steps__bullet {
+  border-color: var(--sia-primary);
+  color: var(--sia-primary);
+}
+
+/* Le halo de l'étape en cours : lent, discret, il ne fait que signaler « on
+   est ici ». Il s'arrête sous préférence de mouvement réduit, comme le reste. */
+.sia-steps__item[data-status="current"] .sia-steps__bullet::after {
+  content: "";
+  position: absolute;
+  width: var(--sia-step-size);
+  height: var(--sia-step-size);
+  border-radius: 999px;
+  border: 2px solid var(--sia-primary);
+  animation: sia-step-pulse 2s var(--sia-easing-standard) infinite;
+}
+@keyframes sia-step-pulse {
+  0% { opacity: .5; transform: scale(1); }
+  70%, 100% { opacity: 0; transform: scale(1.5); }
+}
+
+.sia-steps__item[data-status="error"] .sia-steps__bullet {
+  border-color: var(--sia-danger);
+  background: var(--sia-danger);
+  color: #fff;
+}
+
+.sia-steps__connector { position: relative; overflow: hidden; background: var(--sia-border); }
+.sia-steps__connector-fill {
+  position: absolute;
+  inset: 0;
+  transform-origin: left;
+  background: var(--sia-success);
+  transform: scaleX(0);
+  transition: transform var(--sia-duration-slow) var(--sia-easing-standard);
+}
+.sia-steps__item[data-status="done"] .sia-steps__connector-fill { transform: scaleX(1); }
+
+.sia-steps__body { display: grid; gap: .15rem; min-width: 0; }
+.sia-steps__title { color: var(--sia-foreground); font-weight: 600; font-size: .875rem; }
+.sia-steps__item[data-status="upcoming"] .sia-steps__title { color: var(--sia-muted); font-weight: 500; }
+.sia-steps__item[data-status="error"] .sia-steps__title { color: var(--sia-danger); }
+.sia-steps__description { color: var(--sia-muted); font-size: .8rem; line-height: 1.45; }
+
+.sia-steps__title--button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: color var(--sia-duration-fast) var(--sia-easing-standard);
+}
+.sia-steps__title--button:hover { color: var(--sia-primary); }
+
+/* ── Horizontal ────────────────────────────────────────────────────────── */
+
+.sia-steps--horizontal { align-items: flex-start; gap: 0; }
+.sia-steps--horizontal .sia-steps__item { flex: 1; flex-direction: column; gap: .5rem; }
+.sia-steps--horizontal .sia-steps__marker { align-items: center; width: 100%; }
+.sia-steps--horizontal .sia-steps__connector { flex: 1; height: 2px; margin: 0 .5rem; }
+.sia-steps--horizontal .sia-steps__item:last-child { flex: none; }
+.sia-steps--horizontal .sia-steps__body { padding-right: 1rem; }
+
+/* ── Vertical ──────────────────────────────────────────────────────────── */
+
+.sia-steps--vertical { flex-direction: column; }
+.sia-steps--vertical .sia-steps__item { gap: .875rem; padding-bottom: 1.25rem; }
+.sia-steps--vertical .sia-steps__item:last-child { padding-bottom: 0; }
+.sia-steps--vertical .sia-steps__marker { flex-direction: column; align-items: center; }
+.sia-steps--vertical .sia-steps__connector {
+  flex: 1;
+  width: 2px;
+  min-height: 1rem;
+  margin: .375rem 0 -1.25rem;
+}
+.sia-steps--vertical .sia-steps__connector-fill { transform-origin: top; transform: scaleY(0); }
+.sia-steps--vertical .sia-steps__item[data-status="done"] .sia-steps__connector-fill { transform: scaleY(1); }
+.sia-steps--vertical .sia-steps__body { padding-top: .25rem; }
+
+/* Sous 640 px l'horizontal ne tient plus : cinq étapes côte à côte tronquent
+   tous les libellés. Il bascule en vertical, qui n'a pas cette limite. */
+@media (max-width: 640px) {
+  .sia-steps--horizontal { flex-direction: column; }
+  .sia-steps--horizontal .sia-steps__item { flex-direction: row; gap: .875rem; padding-bottom: 1rem; }
+  .sia-steps--horizontal .sia-steps__marker { flex-direction: column; width: auto; }
+  .sia-steps--horizontal .sia-steps__connector { width: 2px; height: auto; flex: 1; min-height: .75rem; margin: .375rem 0 -1rem; }
+  .sia-steps--horizontal .sia-steps__connector-fill { transform-origin: top; transform: scaleY(0); }
+  .sia-steps--horizontal .sia-steps__item[data-status="done"] .sia-steps__connector-fill { transform: scaleY(1); }
+  .sia-steps--horizontal .sia-steps__body { padding: .25rem 0 0; }
+}

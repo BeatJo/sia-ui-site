@@ -1,0 +1,74 @@
+.sia-scroll-area { position: relative; min-height: 0; min-width: 0; }
+
+.sia-scroll-area__viewport {
+  overflow: auto;
+  /* La barre fine standardisée. Firefox comprend ces deux propriétés, les
+     navigateurs WebKit passent par le sélecteur ci-dessous. */
+  scrollbar-width: thin;
+  scrollbar-color: var(--sia-border-strong) transparent;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+}
+.sia-scroll-area--vertical .sia-scroll-area__viewport { overflow-x: hidden; }
+.sia-scroll-area--horizontal .sia-scroll-area__viewport { overflow-y: hidden; }
+
+.sia-scroll-area__viewport::-webkit-scrollbar { width: 8px; height: 8px; }
+.sia-scroll-area__viewport::-webkit-scrollbar-track { background: transparent; }
+.sia-scroll-area__viewport::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-clip: content-box;
+  background-color: transparent;
+  transition: background-color var(--sia-duration-base) var(--sia-easing-standard);
+}
+/* Le curseur n'apparaît qu'à l'approche : une barre permanente sur une liste
+   courte attire l'œil pour rien. */
+.sia-scroll-area:hover .sia-scroll-area__viewport::-webkit-scrollbar-thumb,
+.sia-scroll-area__viewport:focus-within::-webkit-scrollbar-thumb {
+  background-color: var(--sia-border-strong);
+}
+.sia-scroll-area__viewport::-webkit-scrollbar-thumb:hover {
+  background-color: var(--sia-muted);
+}
+
+/* ── Estompe des bords ─────────────────────────────────────────────────── */
+
+.sia-scroll-area--fade::before,
+.sia-scroll-area--fade::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--sia-duration-base) var(--sia-easing-standard);
+}
+
+.sia-scroll-area--fade.sia-scroll-area--vertical::before,
+.sia-scroll-area--fade.sia-scroll-area--both::before {
+  inset: 0 0 auto 0;
+  height: 2rem;
+  background: linear-gradient(to bottom, var(--sia-background), transparent);
+}
+.sia-scroll-area--fade.sia-scroll-area--vertical::after,
+.sia-scroll-area--fade.sia-scroll-area--both::after {
+  inset: auto 0 0 0;
+  height: 2rem;
+  background: linear-gradient(to top, var(--sia-background), transparent);
+}
+.sia-scroll-area--fade.sia-scroll-area--horizontal::before {
+  inset: 0 auto 0 0;
+  width: 2rem;
+  background: linear-gradient(to right, var(--sia-background), transparent);
+}
+.sia-scroll-area--fade.sia-scroll-area--horizontal::after {
+  inset: 0 0 0 auto;
+  width: 2rem;
+  background: linear-gradient(to left, var(--sia-background), transparent);
+}
+
+.sia-scroll-area--vertical[data-top]::before,
+.sia-scroll-area--both[data-top]::before,
+.sia-scroll-area--horizontal[data-left]::before { opacity: 1; }
+.sia-scroll-area--vertical[data-bottom]::after,
+.sia-scroll-area--both[data-bottom]::after,
+.sia-scroll-area--horizontal[data-right]::after { opacity: 1; }

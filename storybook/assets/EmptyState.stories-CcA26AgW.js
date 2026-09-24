@@ -1,0 +1,5 @@
+import{j as o}from"./iframe-DQyRSC8n.js";import{B as a}from"./index-u74Kvn0L.js";import{E as e}from"./index-CdHHDji3.js";import"./preload-helper-PPVm8Dsz.js";import"./classname-nB6WhpaV.js";import"./index-Ce4u6n81.js";import"./config-BUwt5-xE.js";import"./index-DUXvzsQk.js";import"./geometry-Dzgyg8gY.js";import"./index-542shROb.js";import"./index-D7Pt3lB-.js";const j={title:"Patterns/EmptyState",component:e,tags:["autodocs"],args:{icon:"+",title:"Aucun bénéficiaire",description:"Ajoutez un bénéficiaire pour préparer un transfert.",compact:!1},parameters:{layout:"padded"}},t={},r={args:{action:o.jsx(a,{children:"Ajouter"})}};t.parameters={...t.parameters,docs:{...t.parameters?.docs,source:{originalSource:"{}",...t.parameters?.docs?.source}}};r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`{
+  args: {
+    action: <Button>Ajouter</Button>
+  }
+}`,...r.parameters?.docs?.source}}};const A=["Playground","WithAction"];export{t as Playground,r as WithAction,A as __namedExportsOrder,j as default};

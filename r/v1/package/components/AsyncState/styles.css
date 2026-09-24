@@ -1,0 +1,1 @@
+.sia-async-state { display:grid; place-items:center; gap:.75rem; min-height:12rem; padding:2rem; text-align:center; color:var(--sia-muted); border:1px dashed var(--sia-border); border-radius:var(--sia-radius); }

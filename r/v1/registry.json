@@ -1,0 +1,1836 @@
+{
+  "$schema": "https://sia-ui.dev/schema/registry.json",
+  "name": "sia-ui",
+  "format": 1,
+  "items": [
+    {
+      "name": "accordion",
+      "description": "Collapsible sections with animated height.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Accordion/index.tsx",
+        "components/Accordion/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "icons"
+      ]
+    },
+    {
+      "name": "alert",
+      "description": "Semantic feedback alert with tones, action and dismissal.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Alert/index.tsx",
+        "components/Alert/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "icons"
+      ]
+    },
+    {
+      "name": "amount-display",
+      "description": "Consistent semantic amount display for finance interfaces.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/AmountDisplay/index.tsx",
+        "components/AmountDisplay/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "app-shell",
+      "description": "Application shell: three sidebar states, permission filtering, router-agnostic active route, and mobile drawer or bottom tabs.",
+      "type": "pattern",
+      "version": "0.2.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/AppShell/index.tsx",
+        "components/AppShell/tab-bar.tsx",
+        "components/AppShell/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/react",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "drawer",
+        "sidebar"
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "description": "Box locked to a width / height ratio.",
+      "type": "primitive",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/AspectRatio/index.tsx",
+        "components/AspectRatio/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "async-state",
+      "description": "Loading, empty and error states for remotely loaded content.",
+      "type": "pattern",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/AsyncState/index.tsx",
+        "components/AsyncState/styles.css"
+      ],
+      "registryDependencies": [
+        "alert",
+        "button",
+        "empty-state"
+      ]
+    },
+    {
+      "name": "audit-meta",
+      "description": "Chronological audit history for admin and finance entities.",
+      "type": "pattern",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/AuditMeta/index.tsx",
+        "components/AuditMeta/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "auth-layout",
+      "description": "Reusable authentication page composition.",
+      "type": "pattern",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/AuthLayout/index.tsx",
+        "components/AuthLayout/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "autocomplete",
+      "description": "Combobox with local filtering and optional custom values.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Autocomplete/index.tsx"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "select"
+      ]
+    },
+    {
+      "name": "avatar",
+      "description": "Avatar and stacked group: name-derived tint, initials, presence, three shapes and variants.",
+      "type": "primitive",
+      "version": "0.2.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Avatar/index.tsx",
+        "components/Avatar/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "badge",
+      "description": "Compact semantic status label with side content and loading state.",
+      "type": "primitive",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Badge/index.tsx",
+        "components/Badge/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "spinner"
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "description": "Navigation trail that folds middle levels into a menu.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Breadcrumb/index.tsx",
+        "components/Breadcrumb/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "dropdown-menu",
+        "icons"
+      ]
+    },
+    {
+      "name": "button",
+      "description": "Accessible button with loading and icon states.",
+      "type": "primitive",
+      "version": "0.1.1",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Button/index.tsx",
+        "components/Button/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "spinner",
+        "tooltip"
+      ]
+    },
+    {
+      "name": "calendar",
+      "description": "Localized month and year calendar with range selection and custom cells.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Calendar/index.tsx"
+      ],
+      "dependencies": [
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "icons"
+      ]
+    },
+    {
+      "name": "card",
+      "description": "Composable card with header, body and footer regions.",
+      "type": "primitive",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Card/index.tsx",
+        "components/Card/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "chart",
+      "description": "Dependency-free line, area and bar charts.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Chart/index.tsx",
+        "components/Chart/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "checkbox",
+      "description": "Checkbox and CheckboxGroup with indeterminate, button and tone variants.",
+      "type": "primitive",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Checkbox/index.tsx",
+        "components/Checkbox/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "color-picker",
+      "description": "Native color selection with visible serialized value.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/ColorPicker/index.tsx",
+        "components/ColorPicker/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "command-palette",
+      "description": "Keyboard command search and execution dialog.",
+      "type": "pattern",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/CommandPalette/index.tsx",
+        "components/CommandPalette/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "confirm-dialog",
+      "description": "Confirmation dialog composed from Modal and Button.",
+      "type": "pattern",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/ConfirmDialog/index.tsx"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/tokens"
+      ],
+      "registryDependencies": [
+        "button",
+        "modal"
+      ]
+    },
+    {
+      "name": "container",
+      "description": "Responsive page container and stack primitives.",
+      "type": "primitive",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Container/index.tsx",
+        "components/Container/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "countdown",
+      "description": "Countdown specialization of Timer.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Countdown/index.tsx"
+      ],
+      "registryDependencies": [
+        "timer"
+      ]
+    },
+    {
+      "name": "crud-page",
+      "description": "List page for a declared resource: create, view, edit and delete open their own dialogs, each removable and permission-aware.",
+      "type": "pattern",
+      "version": "0.2.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/CrudPage/index.tsx",
+        "components/CrudPage/dialogs.tsx",
+        "components/CrudPage/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "button",
+        "data-table",
+        "descriptions",
+        "form",
+        "icons",
+        "modal",
+        "page-header",
+        "pagination",
+        "resource"
+      ]
+    },
+    {
+      "name": "currency-input",
+      "description": "Locale-aware currency input exposing a numeric value.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/CurrencyInput/index.tsx",
+        "components/CurrencyInput/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "data-table",
+      "description": "Data table: row actions with permissions and confirmation, selection, card view, density and sorting.",
+      "type": "component",
+      "version": "0.2.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/DataTable/index.tsx",
+        "components/DataTable/types.ts",
+        "components/DataTable/values.ts",
+        "components/DataTable/row-actions.tsx",
+        "components/DataTable/query.ts",
+        "components/DataTable/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/react",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "button",
+        "checkbox",
+        "confirm-dialog",
+        "dropdown-menu",
+        "empty-state",
+        "error-state",
+        "icon-button",
+        "icons",
+        "search-input",
+        "skeleton"
+      ]
+    },
+    {
+      "name": "date-picker",
+      "description": "Calendar-based date picker with overlay, tones, limits and custom cells.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/DatePicker/index.tsx"
+      ],
+      "dependencies": [
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "calendar",
+        "icons",
+        "overlay"
+      ]
+    },
+    {
+      "name": "date-range-filter",
+      "description": "Date range filter with reusable presets and clear action.",
+      "type": "pattern",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/DateRangeFilter/index.tsx",
+        "components/DateRangeFilter/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "date-range-picker"
+      ]
+    },
+    {
+      "name": "date-range-picker",
+      "description": "Unified calendar range selection with serializable boundaries.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/DateRangePicker/index.tsx"
+      ],
+      "dependencies": [
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "calendar",
+        "icons",
+        "overlay"
+      ]
+    },
+    {
+      "name": "date-time-picker",
+      "description": "Composable date and time selection with serializable values.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/DateTimePicker/index.tsx"
+      ],
+      "dependencies": [
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "date-picker",
+        "time-picker"
+      ]
+    },
+    {
+      "name": "descriptions",
+      "description": "Responsive labeled value grid for entity details.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Descriptions/index.tsx",
+        "components/Descriptions/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "divider",
+      "description": "Horizontal or vertical semantic separator.",
+      "type": "primitive",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Divider/index.tsx",
+        "components/Divider/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "drawer",
+      "description": "Accessible side panel with focus management and portal rendering.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Drawer/index.tsx",
+        "components/Drawer/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/react",
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "description": "Dropdown and context menus with keyboard navigation.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/DropdownMenu/index.tsx",
+        "components/DropdownMenu/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "icons",
+        "overlay"
+      ]
+    },
+    {
+      "name": "duration-display",
+      "description": "Localized duration display in text or clock format.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/DurationDisplay/index.tsx"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "empty-state",
+      "description": "Reusable empty state with icon, description and action.",
+      "type": "pattern",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/EmptyState/index.tsx",
+        "components/EmptyState/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "entity-meta",
+      "description": "Compact audit and entity metadata block for admin and finance screens.",
+      "type": "pattern",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/EntityMeta/index.tsx",
+        "components/EntityMeta/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "error-state",
+      "description": "Reusable error state with message extraction and retry action.",
+      "type": "pattern",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/ErrorState/index.tsx",
+        "components/ErrorState/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "button"
+      ]
+    },
+    {
+      "name": "event-calendar",
+      "description": "Calendar with per-day business events.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/EventCalendar/index.tsx",
+        "components/EventCalendar/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/tokens"
+      ],
+      "registryDependencies": [
+        "calendar"
+      ]
+    },
+    {
+      "name": "field",
+      "description": "Typed form field factory reusing the SIA UI control catalog.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Field/index.tsx",
+        "components/Field/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "autocomplete",
+        "checkbox",
+        "color-picker",
+        "currency-input",
+        "date-picker",
+        "date-time-picker",
+        "file-upload",
+        "image-upload",
+        "input",
+        "json-editor",
+        "markdown-editor",
+        "multi-select",
+        "otp-input",
+        "radio-group",
+        "rating",
+        "reference-select",
+        "rich-text-editor",
+        "select",
+        "slider",
+        "switch",
+        "tags-input",
+        "textarea",
+        "time-picker"
+      ]
+    },
+    {
+      "name": "file-upload",
+      "description": "Accessible file picker with drag and drop.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/FileUpload/index.tsx",
+        "components/FileUpload/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "filters-bar",
+      "description": "Composable search, filter, reset and action toolbar.",
+      "type": "pattern",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/FiltersBar/index.tsx",
+        "components/FiltersBar/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "form",
+      "description": "Declarative form driven by a field list, wired to any FormAdapter.",
+      "type": "pattern",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Form/index.tsx",
+        "components/Form/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "button",
+        "field"
+      ]
+    },
+    {
+      "name": "form-adapter-rhf",
+      "description": "react-hook-form adapter for the FormAdapter contract. Requires react-hook-form.",
+      "type": "primitive",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "lib/form-adapter-rhf.tsx"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "react-hook-form"
+      ]
+    },
+    {
+      "name": "form-field",
+      "description": "Deprecated compatibility alias for Field.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/FormField/index.tsx"
+      ],
+      "registryDependencies": [
+        "field"
+      ]
+    },
+    {
+      "name": "hover-card",
+      "description": "Rich preview on hover, with open and close delays.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/HoverCard/index.tsx",
+        "components/HoverCard/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "overlay"
+      ]
+    },
+    {
+      "name": "icon-button",
+      "description": "Accessible icon-only action with required label.",
+      "type": "primitive",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/IconButton/index.tsx",
+        "components/IconButton/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "tooltip"
+      ]
+    },
+    {
+      "name": "icons",
+      "description": "Jeu d'icônes SVG sans dépendance, servi par le package.",
+      "type": "primitive",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Icons/index.tsx"
+      ]
+    },
+    {
+      "name": "image-upload",
+      "description": "Image file upload with local preview and removal.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/ImageUpload/index.tsx",
+        "components/ImageUpload/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "file-upload"
+      ]
+    },
+    {
+      "name": "input",
+      "description": "Accessible text input with side content and loading state.",
+      "type": "primitive",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Input/index.tsx",
+        "components/Input/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "spinner"
+      ]
+    },
+    {
+      "name": "input-number",
+      "description": "Numeric input with stepper, bounds and decimal handling.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/InputNumber/index.tsx",
+        "components/InputNumber/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "icons",
+        "input"
+      ]
+    },
+    {
+      "name": "json-editor",
+      "description": "JSON textarea with validation and formatting.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/JsonEditor/index.tsx",
+        "components/JsonEditor/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "textarea"
+      ]
+    },
+    {
+      "name": "kpi-grid",
+      "description": "Responsive grid for KPI and statistic cards.",
+      "type": "pattern",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/KpiGrid/index.tsx",
+        "components/KpiGrid/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "label",
+      "description": "Libellé de champ, avec marque d'obligation.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Label/index.tsx",
+        "components/Label/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "markdown-editor",
+      "description": "Markdown writing and pluggable preview surface.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/MarkdownEditor/index.tsx"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "textarea"
+      ]
+    },
+    {
+      "name": "mini-calendar",
+      "description": "Compact calendar built on the shared calendar foundation.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/MiniCalendar/index.tsx"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "calendar"
+      ]
+    },
+    {
+      "name": "modal",
+      "description": "Accessible modal dialog with portal, Escape and backdrop handling.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Modal/index.tsx",
+        "components/Modal/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "icons"
+      ]
+    },
+    {
+      "name": "month-picker",
+      "description": "Native serializable month selection.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/MonthPicker/index.tsx"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "multi-select",
+      "description": "Searchable multiple selection with removable values.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/MultiSelect/index.tsx",
+        "components/MultiSelect/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "icons",
+        "select"
+      ]
+    },
+    {
+      "name": "otp-input",
+      "description": "Keyboard and paste friendly one-time code input.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/OtpInput/index.tsx",
+        "components/OtpInput/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "overlay",
+      "description": "Positioned portal foundation with viewport collision handling and dismissal.",
+      "type": "primitive",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Overlay/index.tsx",
+        "components/Overlay/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "page-header",
+      "description": "Consistent page title, description and action area.",
+      "type": "pattern",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/PageHeader/index.tsx",
+        "components/PageHeader/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "pagination",
+      "description": "Accessible controlled pagination with compact page ranges.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Pagination/index.tsx",
+        "components/Pagination/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "icons"
+      ]
+    },
+    {
+      "name": "password-input",
+      "description": "Password field with reveal toggle and strength meter.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/PasswordInput/index.tsx",
+        "components/PasswordInput/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "icons",
+        "input"
+      ]
+    },
+    {
+      "name": "permission-gate",
+      "description": "Render content according to application permissions.",
+      "type": "pattern",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/PermissionGate/index.tsx"
+      ]
+    },
+    {
+      "name": "phone-input",
+      "description": "International phone input with dial code and grouping.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/PhoneInput/index.tsx",
+        "components/PhoneInput/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "input"
+      ]
+    },
+    {
+      "name": "popover",
+      "description": "Click or hover popover composed from the shared positioned Overlay.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Popover/index.tsx",
+        "components/Popover/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "overlay"
+      ]
+    },
+    {
+      "name": "progress",
+      "description": "Determinate and indeterminate progress, bar or circle.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Progress/index.tsx",
+        "components/Progress/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "qr-code",
+      "description": "Accessible QR code frame with pluggable encoder renderer.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/QrCode/index.tsx",
+        "components/QrCode/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "radio-group",
+      "description": "Controlled radio group with standard and RadioButton controls.",
+      "type": "primitive",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/RadioGroup/index.tsx",
+        "components/RadioGroup/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "rating",
+      "description": "Accessible controlled or uncontrolled rating control.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Rating/index.tsx",
+        "components/Rating/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "icons"
+      ]
+    },
+    {
+      "name": "reference-select",
+      "description": "Entity reference selection built on Autocomplete.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/ReferenceSelect/index.tsx",
+        "components/ReferenceSelect/styles.css"
+      ],
+      "registryDependencies": [
+        "autocomplete",
+        "select"
+      ]
+    },
+    {
+      "name": "relative-time",
+      "description": "Auto-refreshing semantic relative date display.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/RelativeTime/index.tsx",
+        "components/RelativeTime/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "require-session",
+      "description": "Route guard on a session store, with a permission rule and no router dependency.",
+      "type": "pattern",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/RequireSession/index.tsx",
+        "components/RequireSession/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "spinner"
+      ]
+    },
+    {
+      "name": "resizable-panel",
+      "description": "Keyboard and pointer resizable split panels.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/ResizablePanel/index.tsx",
+        "components/ResizablePanel/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "resource",
+      "description": "Declare a resource once: table columns, form fields, detail view, validation, search keys and permissions are all derived from it.",
+      "type": "pattern",
+      "version": "0.2.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Resource/index.tsx"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "amount-display",
+        "badge",
+        "data-table",
+        "field",
+        "form",
+        "select"
+      ]
+    },
+    {
+      "name": "rich-text-editor",
+      "description": "Lightweight rich text input with basic formatting commands.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/RichTextEditor/index.tsx",
+        "components/RichTextEditor/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "description": "Scrollable region with thin scrollbars and edge fades.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/ScrollArea/index.tsx",
+        "components/ScrollArea/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "search-input",
+      "description": "Controlled or uncontrolled search field with submit and clear actions.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/SearchInput/index.tsx",
+        "components/SearchInput/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "icons"
+      ]
+    },
+    {
+      "name": "select",
+      "description": "Accessible searchable select with positioned overlay and async option loading.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Select/index.tsx",
+        "components/Select/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "icons",
+        "overlay",
+        "spinner"
+      ]
+    },
+    {
+      "name": "sidebar",
+      "description": "Application navigation: unlimited depth, permission filtering, and a rail whose sub-menus open in a flyout.",
+      "type": "pattern",
+      "version": "0.2.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Sidebar/index.tsx",
+        "components/Sidebar/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "icons",
+        "overlay"
+      ]
+    },
+    {
+      "name": "skeleton",
+      "description": "Token-based loading placeholder for content layouts.",
+      "type": "primitive",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Skeleton/index.tsx",
+        "components/Skeleton/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "slider",
+      "description": "Accessible single or interval slider with formatted values.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Slider/index.tsx",
+        "components/Slider/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "tooltip"
+      ]
+    },
+    {
+      "name": "spinner",
+      "description": "Accessible loading indicator with sizes and screen-reader label.",
+      "type": "primitive",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Spinner/index.tsx",
+        "components/Spinner/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "stat-card",
+      "description": "Business metric card composed from Card and Statistic.",
+      "type": "pattern",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/StatCard/index.tsx",
+        "components/StatCard/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "card",
+        "statistic"
+      ]
+    },
+    {
+      "name": "statistic",
+      "description": "Locale-aware number, currency and percentage display with trend.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Statistic/index.tsx",
+        "components/Statistic/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "steps",
+      "description": "Step progression, horizontal or vertical, with status.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Steps/index.tsx",
+        "components/Steps/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "icons"
+      ]
+    },
+    {
+      "name": "switch",
+      "description": "Controlled or uncontrolled accessible boolean switch.",
+      "type": "primitive",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Switch/index.tsx",
+        "components/Switch/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "tabs",
+      "description": "Accessible controlled or uncontrolled tabs with keyboard navigation.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Tabs/index.tsx",
+        "components/Tabs/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "tags-input",
+      "description": "Create and remove string tags from a text input.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/TagsInput/index.tsx",
+        "components/TagsInput/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "icons"
+      ]
+    },
+    {
+      "name": "textarea",
+      "description": "Accessible multiline input with invalid and resize states.",
+      "type": "primitive",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Textarea/index.tsx",
+        "components/Textarea/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "time-picker",
+      "description": "Timer-based time selection panel with steps, confirmation and tones.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/TimePicker/index.tsx",
+        "components/TimePicker/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "icons",
+        "overlay",
+        "timer"
+      ]
+    },
+    {
+      "name": "time-range-picker",
+      "description": "Serializable start and end time selection.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/TimeRangePicker/index.tsx",
+        "components/TimeRangePicker/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "icons",
+        "time-picker"
+      ]
+    },
+    {
+      "name": "timeline",
+      "description": "Chronological events with semantic tones.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Timeline/index.tsx",
+        "components/Timeline/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "timer",
+      "description": "Reliable count-up or count-down timer based on absolute time.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Timer/index.tsx"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "toast",
+      "description": "Toast queue with placement, pause on hover and promise tracking.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Toast/index.tsx",
+        "components/Toast/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/react",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "icons",
+        "spinner"
+      ]
+    },
+    {
+      "name": "toggle",
+      "description": "Two-state button and toggle group.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Toggle/index.tsx",
+        "components/Toggle/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/react",
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "tooltip",
+      "description": "Accessible contextual tooltip for hover and focus targets.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Tooltip/index.tsx",
+        "components/Tooltip/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/react",
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "tour",
+      "description": "Guided multi-step product tour overlay.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Tour/index.tsx",
+        "components/Tour/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "transfer",
+      "description": "Move items between available and selected lists.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Transfer/index.tsx",
+        "components/Transfer/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "tree",
+      "description": "Accessible expandable hierarchical data view.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Tree/index.tsx",
+        "components/Tree/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "tree-select",
+      "description": "Hierarchical value selection built on Tree.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/TreeSelect/index.tsx",
+        "components/TreeSelect/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/headless",
+        "@sia-ui/utils"
+      ],
+      "registryDependencies": [
+        "tree"
+      ]
+    },
+    {
+      "name": "typography",
+      "description": "Headings, body text and inline code with semantic sizing and tones.",
+      "type": "primitive",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/Typography/index.tsx",
+        "components/Typography/styles.css"
+      ],
+      "dependencies": [
+        "@sia-ui/tokens",
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "unsaved-changes-guard",
+      "description": "Protect browser and in-app navigation with unsaved changes.",
+      "type": "pattern",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/UnsavedChangesGuard/index.tsx"
+      ]
+    },
+    {
+      "name": "week-picker",
+      "description": "Native ISO week selection.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/WeekPicker/index.tsx"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    },
+    {
+      "name": "year-picker",
+      "description": "Bounded year selection.",
+      "type": "component",
+      "version": "0.1.0",
+      "status": "stable",
+      "source": "package",
+      "files": [
+        "components/YearPicker/index.tsx"
+      ],
+      "dependencies": [
+        "@sia-ui/utils"
+      ]
+    }
+  ]
+}

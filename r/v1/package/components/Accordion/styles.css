@@ -1,0 +1,97 @@
+.sia-accordion { display: grid; }
+
+.sia-accordion--bordered {
+  border: 1px solid var(--sia-border);
+  border-radius: calc(var(--sia-radius) + 2px);
+  background: var(--sia-surface-raised);
+  overflow: hidden;
+}
+.sia-accordion--bordered .sia-accordion__item + .sia-accordion__item {
+  border-top: 1px solid var(--sia-border);
+}
+
+.sia-accordion--separated { gap: .5rem; }
+.sia-accordion--separated .sia-accordion__item {
+  border: 1px solid var(--sia-border);
+  border-radius: calc(var(--sia-radius) + 2px);
+  background: var(--sia-surface-raised);
+  overflow: hidden;
+  transition: box-shadow var(--sia-duration-base) var(--sia-easing-standard);
+}
+.sia-accordion--separated .sia-accordion__item[data-open] {
+  box-shadow: var(--sia-elevation-rest);
+}
+
+.sia-accordion--plain .sia-accordion__item + .sia-accordion__item {
+  border-top: 1px solid var(--sia-border);
+}
+
+.sia-accordion__trigger {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  width: 100%;
+  padding: .875rem 1rem;
+  border: 0;
+  background: transparent;
+  color: var(--sia-foreground);
+  font-size: .925rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--sia-duration-fast) var(--sia-easing-standard);
+}
+.sia-accordion__trigger:hover:not(:disabled) { background: var(--sia-surface); }
+.sia-accordion__trigger:disabled { opacity: .5; cursor: not-allowed; }
+
+.sia-accordion__icon { display: grid; place-items: center; flex: none; color: var(--sia-muted); }
+.sia-accordion__heading { flex: 1; display: grid; gap: .1rem; min-width: 0; }
+.sia-accordion__title { font-weight: 600; }
+.sia-accordion__description { color: var(--sia-muted); font-size: .8rem; line-height: 1.4; }
+.sia-accordion__meta { flex: none; color: var(--sia-muted); font-size: .8rem; }
+
+.sia-accordion__chevron {
+  display: grid;
+  place-items: center;
+  flex: none;
+  color: var(--sia-muted);
+  transition: transform var(--sia-duration-base) var(--sia-easing-standard);
+}
+.sia-accordion__item[data-open] .sia-accordion__chevron { transform: rotate(180deg); }
+
+/* La hauteur automatique, animée.
+
+   Une grille dont l'unique ligne passe de `0fr` à `1fr` interpole la hauteur
+   réelle du contenu — ce que `height: auto` ne sait pas faire. Aucun
+   `scrollHeight` n'est lu, donc rien à recalculer quand le contenu change ou
+   quand la fenêtre est redimensionnée. */
+.sia-accordion__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--sia-duration-base) var(--sia-easing-standard);
+}
+.sia-accordion__item[data-open] .sia-accordion__panel { grid-template-rows: 1fr; }
+
+.sia-accordion__content {
+  overflow: hidden;
+  min-height: 0;
+  color: var(--sia-muted);
+  font-size: .875rem;
+  line-height: 1.6;
+  /* Le texte monte légèrement derrière l'ouverture de la hauteur : les deux
+     mouvements se recouvrent, l'ensemble paraît d'un seul tenant. */
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    opacity var(--sia-duration-base) var(--sia-easing-standard),
+    transform var(--sia-duration-base) var(--sia-easing-standard);
+}
+.sia-accordion__item[data-open] .sia-accordion__content {
+  opacity: 1;
+  transform: none;
+  transition-delay: 40ms;
+}
+
+/* Le rembourrage vit sur un enfant, jamais sur `__content` : une marge
+   intérieure posée là garderait une hauteur résiduelle une fois replié — le
+   défaut classique de cette technique. */
+.sia-accordion__inner { padding: 0 1rem 1rem; }

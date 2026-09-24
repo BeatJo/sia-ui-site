@@ -1,0 +1,5 @@
+import{r as n,j as a}from"./iframe-DQyRSC8n.js";import{c as f}from"./classname-nB6WhpaV.js";const t=n.forwardRef(({className:o,onValueChange:i,showValue:u=!0,value:e,defaultValue:l="#2563eb",...c},d)=>{const[p,m]=n.useState(String(l)),r=e===void 0?p:String(e);return a.jsxs("span",{className:f("sia-color-picker",o),children:[a.jsx("input",{...c,ref:d,type:"color",value:r,onChange:s=>{e===void 0&&m(s.target.value),i?.(s.target.value)}}),u&&a.jsx("code",{children:r})]})});t.displayName="ColorPicker";t.__docgenInfo={description:`Le choix d'une couleur.
+
+La valeur hexadécimale est affichée à côté du nuancier : deux bleus
+voisins ne se distinguent pas à l'œil sur un écran mal calibré, alors que
+leurs codes, si.`,methods:[],displayName:"ColorPicker",props:{onValueChange:{required:!1,tsType:{name:"signature",type:"function",raw:"(value: string) => void",signature:{arguments:[{type:{name:"string"},name:"value"}],return:{name:"void"}}},description:""},showValue:{required:!1,tsType:{name:"boolean"},description:"",defaultValue:{value:"true",computed:!1}},defaultValue:{defaultValue:{value:'"#2563eb"',computed:!1},required:!1}},composes:["Omit"]};export{t as C};
