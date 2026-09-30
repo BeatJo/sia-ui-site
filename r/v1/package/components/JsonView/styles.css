@@ -1,0 +1,99 @@
+/* Des lignes d'une hauteur de texte : un JSON se lit en masse, et chaque
+   pixel de marge se multiplie par le nombre de clés. */
+.sia-json-view {
+  display: grid;
+  gap: .5rem;
+  min-width: 0;
+}
+
+.sia-json-view__frame {
+  position: relative;
+  min-width: 0;
+  border: 1px solid var(--sia-border);
+  border-radius: var(--sia-radius);
+  color: var(--sia-foreground);
+  background: var(--sia-surface);
+}
+
+/* En haut à droite, hors du flux : il ne décale aucune ligne. */
+.sia-json-view__copy.sia-json-view__copy {
+  position: absolute;
+  top: .375rem;
+  right: .375rem;
+  z-index: 1;
+}
+
+.sia-json-view__tree,
+.sia-json-view__children,
+.sia-json-view__raw {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .8rem;
+  line-height: 1.5;
+}
+
+.sia-json-view__tree { padding: .5rem; list-style: none; }
+.sia-json-view__children { padding: 0 0 0 1.25rem; list-style: none; }
+
+.sia-json-view__raw {
+  padding: .5rem .75rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* La place du bouton de copie, réservée à droite de la première ligne. */
+.sia-json-view--copyable .sia-json-view__tree,
+.sia-json-view--copyable .sia-json-view__raw { padding-inline-end: 5.5rem; }
+/* Une seule ligne ne doit pas laisser le bouton déborder du cadre. */
+.sia-json-view--copyable .sia-json-view__frame { min-height: 2.75rem; }
+
+/* Du texte qui coule, pas une rangée flexible : une valeur longue passe à la
+   ligne sous elle-même au lieu de découper clé et valeur en colonnes. La
+   bascule, sortie du flux, reste dans la marge. */
+.sia-json-view__row {
+  position: relative;
+  min-width: 0;
+  padding-inline-start: 1.25rem;
+  overflow-wrap: anywhere;
+}
+
+.sia-json-view--static .sia-json-view__row { padding-inline-start: 0; }
+
+.sia-json-view__toggle {
+  position: absolute;
+  top: .1rem;
+  left: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: calc(var(--sia-radius) * .5);
+  color: var(--sia-muted);
+  background: transparent;
+  cursor: pointer;
+  transition: background-color var(--sia-duration-fast) var(--sia-easing-standard);
+}
+
+.sia-json-view__toggle svg { width: .875rem; height: .875rem; }
+.sia-json-view__toggle:hover { color: var(--sia-foreground); background: color-mix(in srgb, var(--sia-foreground) 8%, transparent); }
+.sia-json-view__toggle:focus-visible { outline: 2px solid color-mix(in srgb, var(--sia-primary) 45%, transparent); outline-offset: 1px; }
+
+.sia-json-view__key { color: var(--sia-primary); }
+.sia-json-view__index { color: var(--sia-muted); }
+.sia-json-view__punct { color: var(--sia-muted); white-space: pre; }
+.sia-json-view__string { color: var(--sia-success); }
+.sia-json-view__number { color: var(--sia-info); }
+.sia-json-view__boolean { color: var(--sia-warning); }
+.sia-json-view__null { color: var(--sia-muted); font-style: italic; }
+
+.sia-json-view__summary {
+  margin-inline-start: .75ch;
+  color: var(--sia-muted);
+  font-size: .75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sia-json-view__toggle { transition: none; }
+}

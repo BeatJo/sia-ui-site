@@ -1,0 +1,1 @@
+function i(n,e={}){return n.replace(/\{(\w+)\}/g,(r,t)=>t in e?String(e[t]):r)}const o=new Map;function p(n,e,r,t,c={}){let l=o.get(t);l||(l=new Intl.PluralRules(t),o.set(t,l));const s=n,f=s[`${e}_${l.select(r)}`]??s[`${e}_other`]??s[e]??e;return i(f,{count:r,...c})}export{i as f,p};

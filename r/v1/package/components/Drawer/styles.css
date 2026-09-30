@@ -1,0 +1,176 @@
+.sia-drawer-root {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+
+.sia-drawer-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: rgb(2 6 23 / .52);
+  animation: sia-drawer-fade-in var(--sia-duration-base) var(--sia-easing-entrance) both;
+}
+.sia-drawer-root[data-state="closing"] .sia-drawer-overlay { animation:sia-drawer-fade-out var(--sia-duration-base) var(--sia-easing-exit) both; }
+
+.sia-drawer {
+  position: absolute;
+  z-index: 1;
+  color: var(--sia-foreground, #0f172a);
+  background: var(--sia-background, #fff);
+  border: 1px solid var(--sia-border, #e2e8f0);
+  display: flex;
+  flex-direction: column;
+  width: min(var(--sia-drawer-width), calc(100vw - 2rem));
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 20px 50px rgb(2 6 23 / .24);
+  will-change: transform;
+}
+
+/* Positions */
+/* RIGHT */
+.sia-drawer-right {
+  right: 0;
+  top: 0;
+  height: 100%;
+  animation: sia-drawer-in-right var(--sia-duration-slow) var(--sia-easing-entrance) both;
+}
+
+/* LEFT */
+.sia-drawer-left {
+  left: 0;
+  top: 0;
+  height: 100%;
+  animation: sia-drawer-in-left var(--sia-duration-slow) var(--sia-easing-entrance) both;
+}
+
+/* TOP */
+.sia-drawer-top {
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 100%;
+  max-height: min(80vh, 48rem);
+  --sia-drawer-width: 100% !important;
+  animation: sia-drawer-in-top var(--sia-duration-slow) var(--sia-easing-entrance) both;
+}
+
+/* BOTTOM */
+.sia-drawer-bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 100%;
+  max-height: min(80vh, 48rem);
+  --sia-drawer-width: 100% !important;
+  animation: sia-drawer-in-bottom var(--sia-duration-slow) var(--sia-easing-entrance) both;
+}
+
+
+/* Sizes */
+.sia-drawer-sm { --sia-drawer-width: 320px; }
+.sia-drawer-md { --sia-drawer-width: 420px; }
+.sia-drawer-lg { --sia-drawer-width: 600px; }
+.sia-drawer-xl { --sia-drawer-width: 800px; }
+
+.sia-drawer-header,
+.sia-drawer-footer {
+  padding: 16px;
+  border-bottom: 1px solid var(--sia-border, #e2e8f0);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sia-drawer-footer {
+  border-top: 1px solid var(--sia-border, #e2e8f0);
+  border-bottom: 0;
+  margin-top: auto;
+}
+
+.sia-drawer-body {
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.sia-drawer-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.sia-drawer-close {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-left: auto;
+  padding: 0;
+  color: var(--sia-muted, #64748b);
+  background: transparent;
+  border: 0;
+  border-radius: var(--sia-radius, .375rem);
+  cursor: pointer;
+}
+.sia-drawer-close:hover { color:var(--sia-foreground,#0f172a); background:var(--sia-surface,#f8fafc); }
+.sia-drawer-close:focus-visible { outline:2px solid var(--sia-primary,#2563eb); outline-offset:2px; }
+.sia-drawer-close svg { width:1.125rem; height:1.125rem; }
+
+.sia-drawer-right.is-closing {
+  animation: sia-drawer-out-right var(--sia-duration-base) var(--sia-easing-exit) both;
+}
+
+.sia-drawer-left.is-closing {
+  animation: sia-drawer-out-left var(--sia-duration-base) var(--sia-easing-exit) both;
+}
+
+.sia-drawer-top.is-closing {
+  animation: sia-drawer-out-top var(--sia-duration-base) var(--sia-easing-exit) both;
+}
+
+.sia-drawer-bottom.is-closing {
+  animation: sia-drawer-out-bottom var(--sia-duration-base) var(--sia-easing-exit) both;
+}
+
+/* Animations */
+@keyframes sia-drawer-fade-in { from { opacity:0; } to { opacity:1; } }
+@keyframes sia-drawer-fade-out { to { opacity:0; } }
+@keyframes sia-drawer-in-right {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes sia-drawer-in-left {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes sia-drawer-in-top {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(0); }
+}
+
+@keyframes sia-drawer-in-bottom {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+@keyframes sia-drawer-out-right {
+  to { transform: translateX(100%); }
+}
+
+@keyframes sia-drawer-out-left {
+  to { transform: translateX(-100%); }
+}
+
+@keyframes sia-drawer-out-top {
+  to { transform: translateY(-100%); }
+}
+
+@keyframes sia-drawer-out-bottom {
+  to { transform: translateY(100%); }
+}

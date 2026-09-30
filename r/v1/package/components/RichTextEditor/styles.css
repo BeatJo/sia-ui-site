@@ -1,0 +1,2 @@
+.sia-rich-text-editor [contenteditable]:empty::before { content:attr(data-placeholder); color:var(--sia-muted); }
+.sia-rich-text-editor--disabled { opacity:.55; }

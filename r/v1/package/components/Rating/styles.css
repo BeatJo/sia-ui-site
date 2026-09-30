@@ -1,0 +1,41 @@
+.sia-rating { display:inline-flex; gap:.2rem; }
+.sia-rating button { padding:.1rem; border:0; color:var(--sia-border); background:transparent; font-size:1.5rem; cursor:pointer; }
+.sia-rating button.is-active { color:var(--sia-warning); }
+
+/* La demi-étoile : deux tracés superposés, celui du dessus rogné à la part
+   remplie. Un caractère ne permettait pas ça — d'où son remplacement. */
+.sia-rating__star {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+}
+
+.sia-rating__outline,
+.sia-rating__fill {
+  grid-area: 1 / 1;
+  width: 1em;
+  height: 1em;
+}
+
+.sia-rating__outline {
+  color: var(--sia-border-strong);
+}
+
+.sia-rating__fill {
+  color: var(--sia-warning);
+  clip-path: inset(0 calc(100% - var(--sia-rating-fill, 0%)) 0 0);
+  transition: clip-path var(--sia-duration-base) var(--sia-easing-standard);
+}
+
+.sia-rating button {
+  transition: transform var(--sia-duration-fast) var(--sia-easing-spring);
+}
+
+.sia-rating button:hover:not(:disabled) {
+  transform: scale(1.15);
+}
+
+.sia-rating button:active:not(:disabled) {
+  transform: scale(0.95);
+  transition-duration: var(--sia-duration-instant);
+}

@@ -1,0 +1,6 @@
+import"./iframe-DZg55ZNc.js";import{A as t}from"./index-TSnE8ppb.js";import"./preload-helper-PPVm8Dsz.js";import"./classname-nB6WhpaV.js";import"./index-DuZVuOGI.js";const s=[{key:"facturation",title:"Facturation",description:"Moyens de paiement et échéances",meta:"3 factures",content:"Les factures sont émises le premier de chaque mois et réglées à trente jours."},{key:"acces",title:"Accès et permissions",content:"Chaque membre reçoit un rôle. Les permissions s'héritent de l'agence."},{key:"archives",title:"Archives",meta:"Lecture seule",disabled:!0,content:"Verrouillé."}],p={title:"Mise en page/Accordion",component:t,tags:["autodocs"],args:{items:s,type:"single",variant:"bordered",defaultValue:["facturation"]},argTypes:{type:{control:"inline-radio",options:["single","multiple"]},variant:{control:"inline-radio",options:["bordered","separated","plain"]}},parameters:{layout:"padded"}},e={},r={args:{type:"multiple",variant:"separated"}};e.parameters={...e.parameters,docs:{...e.parameters?.docs,source:{originalSource:"{}",...e.parameters?.docs?.source}}};r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`{
+  args: {
+    type: "multiple",
+    variant: "separated"
+  }
+}`,...r.parameters?.docs?.source}}};const l=["Playground","PlusieursOuvertes"];export{e as Playground,r as PlusieursOuvertes,l as __namedExportsOrder,p as default};
