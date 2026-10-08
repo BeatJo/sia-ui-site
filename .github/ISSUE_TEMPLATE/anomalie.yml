@@ -1,0 +1,64 @@
+name: Anomalie
+description: Un composant, la CLI ou le registre ne se comporte pas comme annoncé.
+labels: ["anomalie"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Merci. Deux informations font gagner le plus de temps : **par quel
+        canal** le code est arrivé, et **de quoi il dépend** — un composant
+        copié vit dans ton dépôt, donc son code peut différer du nôtre.
+
+  - type: input
+    id: composant
+    attributes:
+      label: Quoi
+      description: Le nom de l'entrée, de la commande ou du paquet.
+      placeholder: sidebar, sia-ui add, @sia-ui/headless
+    validations:
+      required: true
+
+  - type: dropdown
+    id: canal
+    attributes:
+      label: Canal
+      options:
+        - Copié par la CLI (sia-ui add)
+        - Installé comme paquet npm
+        - Les deux
+    validations:
+      required: true
+
+  - type: textarea
+    id: versions
+    attributes:
+      label: Versions
+      description: >
+        La sortie de `sia-ui doctor` si le composant a été copié — elle dit la
+        version installée et si le fichier a été retouché depuis.
+      render: text
+      placeholder: |
+        npx @sia-ui/cli doctor
+        4 entrée(s) installée(s).
+        Rien à signaler.
+    validations:
+      required: true
+
+  - type: textarea
+    id: attendu
+    attributes:
+      label: Ce qui devait arriver, et ce qui arrive
+      description: >
+        Dans l'ordre : ce que tu attendais, ce que tu observes, et les étapes
+        pour le reproduire. Pour un défaut visuel, joins une capture.
+    validations:
+      required: true
+
+  - type: textarea
+    id: retouches
+    attributes:
+      label: Le fichier a-t-il été modifié ?
+      description: >
+        Si oui, colle la sortie de `sia-ui diff <nom>`. Une retouche locale
+        explique une bonne partie des écarts, et ce n'est pas un défaut.
+      render: diff

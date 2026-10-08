@@ -1,0 +1,26 @@
+/**
+ * La page de liste.
+ *
+ * Presque rien : le titre, le tableau et la pagination portent leur propre
+ * style. Ce qui reste est l'espacement entre eux, et c'est précisément ce
+ * qu'une page ne doit pas redéfinir écran par écran.
+ */
+
+.sia-crud-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+/* L'en-tête perd sa marge de page : l'écart entre les blocs est le `gap`
+   ci-dessus, et les deux s'additionnaient — plus de trois lignes vides entre
+   la description et la recherche. */
+.sia-crud-page > .sia-page-header { margin-bottom: 0; }
+
+/* La pagination dispose elle-même ses groupes sur toute la largeur. */
+.sia-crud-page > .sia-pagination { margin-top: .25rem; }
+
+@media (max-width: 47.9375rem) {
+  .sia-crud-page { gap: 1rem; }
+}

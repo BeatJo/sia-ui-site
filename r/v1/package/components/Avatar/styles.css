@@ -1,0 +1,236 @@
+/**
+ * L'avatar.
+ *
+ * Tout repose sur une teinte, `--sia-avatar-tint`, posée par une classe et
+ * consommée par les trois variantes. Changer de variante ne redéfinit donc
+ * jamais la couleur : c'est ce qui permet à une teinte dérivée du nom de
+ * survivre à `soft`, `solid` et `outline` sans triplement des règles.
+ */
+
+.sia-avatar {
+  --sia-avatar-tint: var(--sia-primary);
+  --sia-avatar-size: 2.5rem;
+  --sia-avatar-radius: 50%;
+
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: var(--sia-avatar-size);
+  height: var(--sia-avatar-size);
+  border: 0;
+  border-radius: var(--sia-avatar-radius);
+  padding: 0;
+  overflow: hidden;
+  font-family: inherit;
+  font-weight: 600;
+  /* Les initiales ne doivent jamais être sélectionnées par un double-clic
+     destiné à ouvrir une fiche. */
+  user-select: none;
+  line-height: 1;
+}
+
+/* ── Le repli ───────────────────────────────────────────────────────────── */
+
+.sia-avatar__fallback {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  /* La même courbure que le parent. Sans elle, l'ombre interne de la
+     variante `outline` dessine un cadre carré que le masque circulaire
+     rogne : il n'en restait que deux fragments verticaux. */
+  border-radius: inherit;
+  /* Une lettre ne se centre pas d'elle-même : la casse haute laisse un vide
+     sous la ligne de base, et l'initiale paraît trop haute. */
+  padding-top: .04em;
+  font-size: calc(var(--sia-avatar-size) * .38);
+  letter-spacing: .01em;
+}
+
+/* ── L'image ────────────────────────────────────────────────────────────── */
+
+.sia-avatar__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Elle arrive par-dessus le repli, qui tenait la place : rien ne saute,
+     rien ne clignote. */
+  opacity: 0;
+  animation: sia-avatar-image var(--sia-duration-base) var(--sia-easing-standard) forwards;
+}
+@keyframes sia-avatar-image {
+  from { opacity: 0; transform: scale(1.04); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Pendant l'attente, un souffle très léger sur le repli — assez pour dire
+   « ça arrive », pas assez pour attirer l'œil dans une liste de cinquante. */
+.sia-avatar--loading .sia-avatar__fallback {
+  animation: sia-avatar-attente 1.6s ease-in-out infinite;
+}
+@keyframes sia-avatar-attente {
+  50% { opacity: .55; }
+}
+
+/* ── Les variantes ──────────────────────────────────────────────────────── */
+
+/* `soft` : la teinte à faible saturation, posée en dégradé très court. C'est
+   ce qui donne la matière sans crier — un aplat pur paraît plat, un dégradé
+   marqué paraît daté. */
+.sia-avatar--soft .sia-avatar__fallback {
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--sia-avatar-tint) 20%, var(--sia-background)),
+    color-mix(in srgb, var(--sia-avatar-tint) 11%, var(--sia-background))
+  );
+  color: color-mix(in srgb, var(--sia-avatar-tint) 82%, var(--sia-foreground));
+}
+
+.sia-avatar--solid .sia-avatar__fallback {
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--sia-avatar-tint) 88%, white),
+    var(--sia-avatar-tint)
+  );
+  color: var(--sia-primary-foreground, #fff);
+}
+
+.sia-avatar--outline .sia-avatar__fallback {
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--sia-avatar-tint) 45%, transparent);
+  background: var(--sia-background);
+  color: color-mix(in srgb, var(--sia-avatar-tint) 85%, var(--sia-foreground));
+}
+
+/* Le liseré qui détache du fond — indispensable dans une pile. */
+.sia-avatar--ring {
+  box-shadow:
+    0 0 0 2px var(--sia-background),
+    0 0 0 3px color-mix(in srgb, var(--sia-avatar-tint) 30%, transparent);
+}
+
+/* ── Les teintes ────────────────────────────────────────────────────────── */
+
+.sia-avatar--tint-primary { --sia-avatar-tint: var(--sia-primary); }
+.sia-avatar--tint-secondary { --sia-avatar-tint: var(--sia-secondary); }
+.sia-avatar--tint-info { --sia-avatar-tint: var(--sia-info); }
+.sia-avatar--tint-success { --sia-avatar-tint: var(--sia-success); }
+.sia-avatar--tint-warning { --sia-avatar-tint: var(--sia-warning); }
+.sia-avatar--tint-danger { --sia-avatar-tint: var(--sia-danger); }
+
+/* ── Les formes ─────────────────────────────────────────────────────────── */
+
+.sia-avatar--circle { --sia-avatar-radius: 50%; }
+/* Un rayon proportionnel à la taille : un carré arrondi de 2 rem et un de
+   5 rem n'ont pas la même courbure apparente à rayon fixe. */
+.sia-avatar--rounded { --sia-avatar-radius: calc(var(--sia-avatar-size) * .28); }
+.sia-avatar--square { --sia-avatar-radius: calc(var(--sia-avatar-size) * .08); }
+
+/* ── Les tailles ────────────────────────────────────────────────────────── */
+
+.sia-avatar--xs { --sia-avatar-size: 1.5rem; }
+.sia-avatar--sm { --sia-avatar-size: 2rem; }
+.sia-avatar--md { --sia-avatar-size: 2.5rem; }
+.sia-avatar--lg { --sia-avatar-size: 3.25rem; }
+.sia-avatar--xl { --sia-avatar-size: 4.5rem; }
+
+/* ── Le statut ──────────────────────────────────────────────────────────── */
+
+.sia-avatar__status {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: calc(var(--sia-avatar-size) * .26);
+  height: calc(var(--sia-avatar-size) * .26);
+  /* Un minimum absolu : sous six pixels, la pastille n'est plus lisible,
+     quelle que soit la taille de l'avatar. */
+  min-width: .4rem;
+  min-height: .4rem;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--sia-background);
+}
+
+/* Décalée vers l'intérieur sur un cercle : posée au coin d'une boîte carrée,
+   elle sortirait du disque. */
+.sia-avatar--circle .sia-avatar__status {
+  right: calc(var(--sia-avatar-size) * .03);
+  bottom: calc(var(--sia-avatar-size) * .03);
+}
+
+.sia-avatar__status--online { background: var(--sia-success); }
+.sia-avatar__status--busy { background: var(--sia-danger); }
+.sia-avatar__status--away { background: var(--sia-warning); }
+.sia-avatar__status--offline {
+  background: var(--sia-background);
+  box-shadow: 0 0 0 2px var(--sia-background), inset 0 0 0 2px var(--sia-muted);
+}
+
+/* ── Actionnable ────────────────────────────────────────────────────────── */
+
+.sia-avatar--pressable {
+  cursor: pointer;
+  transition:
+    transform var(--sia-duration-fast) var(--sia-easing-standard),
+    box-shadow var(--sia-duration-fast) var(--sia-easing-standard);
+}
+.sia-avatar--pressable:hover { transform: translateY(-1px); }
+.sia-avatar--pressable:active { transform: translateY(0) scale(.96); }
+.sia-avatar--pressable:focus-visible {
+  outline: 2px solid var(--sia-primary);
+  outline-offset: 2px;
+}
+
+/* ── Le groupe ──────────────────────────────────────────────────────────── */
+
+.sia-avatar-group {
+  --sia-avatar-overlap: .25;
+  display: inline-flex;
+  align-items: center;
+  /* Une marge négative dont l'amplitude suit la taille : un chevauchement
+     fixe disparaît sur les grands avatars et les écrase sur les petits. */
+  padding-left: calc(var(--sia-avatar-size, 2.5rem) * var(--sia-avatar-overlap));
+}
+
+.sia-avatar-group > .sia-avatar {
+  margin-left: calc(var(--sia-avatar-size) * var(--sia-avatar-overlap) * -1);
+  /* Le liseré de la couleur du fond : sans lui, deux teintes voisines se
+     fondent l'une dans l'autre et la pile devient une tache. Son épaisseur
+     suit la taille — deux pixels disparaissent sur un avatar de 4,5 rem. */
+  box-shadow: 0 0 0 calc(var(--sia-avatar-size) * .055) var(--sia-background);
+  transition: transform var(--sia-duration-base) var(--sia-easing-spring);
+}
+
+/* Chaque avatar recouvre le précédent — l'ordre de peinture naturel, sans
+   `z-index`.
+   
+   L'inverse semblait plus logique, et c'est un piège : en mettant le premier
+   devant, chaque suivant est masqué **à gauche**, c'est-à-dire précisément là
+   où commence la lecture. « AK » devenait « K ». Recouvert à droite, chacun
+   garde au moins sa première initiale, et le compteur final reste entier. */
+
+/* Au survol, la pile s'ouvre pour qu'on puisse viser quelqu'un. */
+.sia-avatar-group--spread:hover > .sia-avatar {
+  margin-left: calc(var(--sia-avatar-size) * var(--sia-avatar-overlap) * -.25);
+}
+.sia-avatar-group--spread > .sia-avatar {
+  transition:
+    margin-left var(--sia-duration-base) var(--sia-easing-spring),
+    transform var(--sia-duration-base) var(--sia-easing-spring);
+}
+.sia-avatar-group > .sia-avatar:hover { transform: translateY(-2px); z-index: 10; }
+
+.sia-avatar--overflow .sia-avatar__fallback {
+  background: var(--sia-surface);
+  color: var(--sia-muted);
+  font-size: calc(var(--sia-avatar-size) * .32);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sia-avatar__image,
+  .sia-avatar--loading .sia-avatar__fallback { animation: none; opacity: 1; }
+  .sia-avatar--pressable:hover,
+  .sia-avatar-group > .sia-avatar:hover { transform: none; }
+}

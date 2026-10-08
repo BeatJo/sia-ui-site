@@ -1,0 +1,182 @@
+.sia-chart { display: grid; gap: .5rem; margin: 0; }
+
+/* Deux colonnes : les valeurs à gauche, le tracé à droite. Les libellés du
+   bas occupent la seconde colonne, donc ils s'alignent sur le tracé et non
+   sur l'ensemble — c'est la largeur de la colonne des valeurs qui les
+   décalait. */
+.sia-chart__frame {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: .5rem;
+  row-gap: .35rem;
+}
+.sia-chart--no-axis .sia-chart__frame { grid-template-columns: minmax(0, 1fr); }
+
+/* Le repère du tracé : tout ce qui est posé en pourcentage — repères de
+   survol, infobulle — se mesure sur cette boîte, qui est exactement la
+   zone dessinée. */
+.sia-chart__canvas {
+  position: relative;
+  grid-column: -2;
+  grid-row: 1;
+  min-width: 0;
+  height: var(--sia-chart-height, 220px);
+}
+
+.sia-chart__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.sia-chart__grid { stroke: var(--sia-border); stroke-width: 1; stroke-dasharray: 3 4; opacity: .7; }
+
+.sia-chart__line {
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Le tracé se découvre de la gauche vers la droite.
+
+   Un volet plutôt qu'un pointillé animé : `vector-effect: non-scaling-stroke`
+   — indispensable pour garder l'épaisseur du trait malgré l'étirement non
+   uniforme du viewBox — fait calculer les tirets en pixels écran. La
+   normalisation par `pathLength` n'a alors plus d'effet et la courbe sort
+   hachurée. Le volet, lui, ne dépend d'aucune longueur. */
+.sia-chart__reveal {
+  transform-origin: left;
+  animation: sia-chart-reveal 900ms var(--sia-easing-standard) both;
+}
+@keyframes sia-chart-reveal {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.sia-chart__area {
+  opacity: 0;
+  animation: sia-chart-fill 700ms var(--sia-easing-standard) 250ms forwards;
+}
+@keyframes sia-chart-fill {
+  to { opacity: 1; }
+}
+
+.sia-chart__bar {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: sia-chart-grow var(--sia-duration-slow) var(--sia-easing-spring) both;
+  transition: opacity var(--sia-duration-fast) var(--sia-easing-standard);
+}
+.sia-chart--bar:hover .sia-chart__bar { opacity: .55; }
+.sia-chart--bar .sia-chart__bar[data-active],
+.sia-chart--bar:not(:hover) .sia-chart__bar { opacity: 1; }
+@keyframes sia-chart-grow {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+.sia-chart__cursor { stroke: var(--sia-border-strong); stroke-width: 1; }
+
+/* Le repère est un élément HTML posé au-dessus du tracé, pas un cercle SVG :
+   le viewBox est étiré horizontalement, et cet étirement transforme un
+   cercle en ellipse. `vector-effect` protège l'épaisseur du trait, jamais
+   la géométrie. */
+.sia-chart__point {
+  position: absolute;
+  width: .4rem;
+  height: .4rem;
+  border: 2px solid var(--sia-background);
+  border-radius: 999px;
+  /* `content-box` garde la pastille ronde : sans lui, la bordure entre
+     dans les dimensions et le cercle rétrécit à mesure qu'elle épaissit. */
+  box-sizing: content-box;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  /* Il glisse d'un point à l'autre au lieu d'apparaître : c'est ce qui rend
+     le déplacement du curseur lisible. Aucune animation d'entrée — elle
+     porterait sur la même propriété que le centrage, et le repère resterait
+     à l'échelle zéro partout où elle ne joue pas. */
+  transition:
+    left var(--sia-duration-fast) var(--sia-easing-standard),
+    top var(--sia-duration-fast) var(--sia-easing-standard);
+}
+
+.sia-chart__axis-y {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--sia-muted);
+  font-size: .7rem;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.sia-chart__axis-x {
+  grid-column: -2;
+  grid-row: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: .5rem;
+  color: var(--sia-muted);
+  font-size: .7rem;
+}
+.sia-chart__axis-x span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color var(--sia-duration-fast) var(--sia-easing-standard);
+}
+.sia-chart__axis-x span[data-active] { color: var(--sia-foreground); font-weight: 600; }
+
+.sia-chart__tooltip {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  display: grid;
+  gap: .2rem;
+  padding: .5rem .625rem;
+  border: 1px solid var(--sia-border);
+  border-radius: var(--sia-radius);
+  background: var(--sia-surface-raised);
+  box-shadow: var(--sia-elevation-overlay);
+  font-size: .75rem;
+  white-space: nowrap;
+  pointer-events: none;
+  /* Centrée sur le point, elle suit le curseur sans jamais le recouvrir. */
+  transform: translateX(-50%);
+  max-width: 100%;
+  transition: left var(--sia-duration-fast) var(--sia-easing-standard);
+  animation: sia-fade-in var(--sia-duration-fast) var(--sia-easing-standard);
+}
+/* Aux deux extrémités, une infobulle centrée déborderait du cadre. Elle
+   s'accroche alors par son bord au point plutôt que par son milieu. */
+.sia-chart__tooltip[data-align="start"] { transform: translateX(0); }
+.sia-chart__tooltip[data-align="end"] { transform: translateX(-100%); }
+
+.sia-chart__tooltip-title { color: var(--sia-foreground); font-size: .72rem; }
+.sia-chart__tooltip-row { display: flex; align-items: center; gap: .4rem; color: var(--sia-muted); }
+.sia-chart__tooltip-row b { margin-left: auto; color: var(--sia-foreground); font-variant-numeric: tabular-nums; }
+
+.sia-chart__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem 1rem;
+  color: var(--sia-muted);
+  font-size: .75rem;
+}
+.sia-chart__legend span { display: inline-flex; align-items: center; gap: .35rem; }
+.sia-chart__caption { color: var(--sia-muted); font-size: .75rem; }
+
+.sia-chart__dot { display: inline-block; width: .5rem; height: .5rem; border-radius: 999px; flex: none; }
+
+/* ── Sparkline ─────────────────────────────────────────────────────────── */
+
+.sia-sparkline { display: inline-block; vertical-align: middle; }
+/* La hauteur vient de `--sia-chart-height`, comme partout ailleurs : un
+   `height: 100%` ici se résoudrait contre une grille de hauteur automatique
+   et rendait la vignette carrée. */
+.sia-sparkline .sia-chart { gap: 0; }
+.sia-sparkline .sia-chart__line { stroke-width: 1.5; }

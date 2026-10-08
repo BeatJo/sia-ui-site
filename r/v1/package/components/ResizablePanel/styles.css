@@ -1,0 +1,5 @@
+.sia-resizable-panel { display:flex; min-height:18rem; overflow:hidden; border:1px solid var(--sia-border); }
+.sia-resizable-panel--vertical { flex-direction:column; }
+.sia-resizable-panel > section { min-width:0; min-height:0; flex:1; overflow:auto; padding:1rem; }
+.sia-resizable-panel__handle { flex:none; width:.4rem; background:var(--sia-border); cursor:col-resize; }
+.sia-resizable-panel--vertical .sia-resizable-panel__handle { width:auto; height:.4rem; cursor:row-resize; }

@@ -1,0 +1,5 @@
+import{r as u,j as a}from"./iframe-Ce1rQf5z.js";import{c as d}from"./classname-nB6WhpaV.js";const n=u.forwardRef(({className:r,children:i,required:t,muted:l,tone:e,...s},o)=>a.jsxs("label",{ref:o,className:d("sia-label",l&&"sia-label--muted",e&&`sia-label--${e}`,r),...s,children:[i,t&&a.jsx("span",{className:"sia-label__required","aria-hidden":"true",children:"*"})]}));n.displayName="SiaLabel";n.__docgenInfo={description:`Le nom d'un champ.
+
+L'astérisque d'obligation est portée par une prop plutôt qu'écrite dans
+le texte : elle reçoit ainsi un \`aria-hidden\`, et le champ est annoncé
+« obligatoire » plutôt que « nom étoile ».`,methods:[],displayName:"SiaLabel",props:{tone:{required:!1,tsType:{name:"unknown[number]",raw:"(typeof semanticColors)[number]"},description:"Le ton du libellé. Par défaut, la couleur du texte courant."},required:{required:!1,tsType:{name:"boolean"},description:"Marque le champ comme obligatoire d'une astérisque."},muted:{required:!1,tsType:{name:"boolean"},description:"Atténue le libellé — une mention secondaire, une unité."}}};export{n as L};

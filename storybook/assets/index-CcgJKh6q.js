@@ -1,0 +1,32 @@
+import{r,u as L,j as o}from"./iframe-Ce1rQf5z.js";import{c as _}from"./classname-nB6WhpaV.js";import{I as D}from"./index-DKDf4LSF.js";import{S as E}from"./index-BGoktTGE.js";const M=[{code:"CM",dial:"+237",flag:"🇨🇲",digits:9,groups:[1,2,2,2,2]},{code:"CI",dial:"+225",flag:"🇨🇮",digits:10,groups:[2,2,2,2,2]},{code:"SN",dial:"+221",flag:"🇸🇳",digits:9,groups:[2,3,2,2]},{code:"GA",dial:"+241",flag:"🇬🇦",digits:8,groups:[2,2,2,2]},{code:"CG",dial:"+242",flag:"🇨🇬",digits:9,groups:[2,3,2,2]},{code:"CD",dial:"+243",flag:"🇨🇩",digits:9,groups:[3,3,3]},{code:"BF",dial:"+226",flag:"🇧🇫",digits:8,groups:[2,2,2,2]},{code:"ML",dial:"+223",flag:"🇲🇱",digits:8,groups:[2,2,2,2]},{code:"BJ",dial:"+229",flag:"🇧🇯",digits:10,groups:[2,2,2,2,2]},{code:"TG",dial:"+228",flag:"🇹🇬",digits:8,groups:[2,2,2,2]},{code:"TD",dial:"+235",flag:"🇹🇩",digits:8,groups:[2,2,2,2]},{code:"FR",dial:"+33",flag:"🇫🇷",digits:9,groups:[1,2,2,2,2]},{code:"BE",dial:"+32",flag:"🇧🇪",digits:9,groups:[3,2,2,2]},{code:"CA",dial:"+1",flag:"🇨🇦",digits:10,groups:[3,3,4]}],f=new Map;function k(i){if(!f.has(i)){let n;try{n=new Intl.DisplayNames([i],{type:"region"})}catch{n=void 0}f.set(i,n)}return f.get(i)}function b(i){return i.replace(/\D/g,"")}function A(i,n){if(!n||n.length===0)return i;const t=[];let e=i;for(const u of n){if(!e)break;t.push(e.slice(0,u)),e=e.slice(u)}return e&&t.push(e),t.join(" ")}function O(i,n){return[...n].sort((t,e)=>e.dial.length-t.dial.length).find(t=>i.startsWith(t.dial))}const N=r.forwardRef(({value:i,defaultValue:n="",onValueChange:t,countries:e=M,defaultCountry:u,lockCountry:V=!1,countrySelectProps:m,disabled:h,className:x,...j},I)=>{const c=L(),v=i!==void 0,[T,P]=r.useState(n),d=v?i:T,g=e.find(l=>l.code===u)??e[0],[C,S]=r.useState(g.code),s=r.useMemo(()=>O(d,e)??e.find(l=>l.code===C)??g,[e,g,C,d]),p=d.startsWith(s.dial)?d.slice(s.dial.length):b(d),q=r.useMemo(()=>{const l=k(c.language);return e.map(a=>({value:a.code,label:`${a.flag} ${a.label??l?.of(a.code)??a.code} (${a.dial})`,keywords:[a.code]}))},[e,c.language]),y=l=>{v||P(l),t?.(l)};return o.jsx(D,{...j,ref:I,type:"tel",inputMode:"tel",autoComplete:"tel-national",className:_("sia-phone__field",x),disabled:h,value:A(p,s.groups),...s.digits?{maxLength:s.digits+8}:{},onChange:l=>{let a=b(l.target.value);s.digits&&(a=a.slice(0,s.digits)),y(a?`${s.dial}${a}`:"")},left:V?o.jsxs("span",{className:"sia-phone__country",children:[o.jsx("span",{className:"sia-phone__flag","aria-hidden":"true",children:s.flag}),o.jsx("span",{className:"sia-phone__dial",children:s.dial})]}):o.jsx(E,{variant:"embedded",searchable:!0,"aria-label":c.countryCode,renderValue:()=>o.jsxs("span",{className:"sia-phone__value",children:[o.jsx("span",{className:"sia-phone__flag","aria-hidden":"true",children:s.flag}),o.jsx("span",{className:"sia-phone__dial",children:s.dial})]}),...m,className:_("sia-phone__country",m?.className),options:q,value:s.code,disabled:h??!1,onValueChange:l=>{const a=e.find(w=>w.code===l);a&&(S(a.code),y(p?`${a.dial}${p}`:""))}})})});N.displayName="PhoneInput";N.__docgenInfo={description:`Un numéro de téléphone international.
+
+L'indicatif et le numéro national sont deux champs distincts, parce qu'une
+seule zone de saisie oblige à taper le \`+237\` à chaque fois — ce que
+personne ne fait, d'où des numéros enregistrés sans indicatif.
+
+Aucune validation réelle n'est tentée : \`libphonenumber-js\` fait cela bien,
+pèse 145 ko, et se branche par-dessus si un projet en a besoin. Ici, le
+découpage visuel et la forme E.164 en sortie.`,methods:[],displayName:"PhoneInput",props:{value:{required:!1,tsType:{name:"string"},description:"Le numéro complet, indicatif compris : `+237612345678`."},defaultValue:{required:!1,tsType:{name:"string"},description:"",defaultValue:{value:'""',computed:!1}},onValueChange:{required:!1,tsType:{name:"signature",type:"function",raw:"(value: string) => void",signature:{arguments:[{type:{name:"string"},name:"value"}],return:{name:"void"}}},description:"Reçoit toujours la forme E.164, sans espaces."},countries:{required:!1,tsType:{name:"Array",elements:[{name:"PhoneCountry"}],raw:"PhoneCountry[]"},description:"",defaultValue:{value:`[
+  { code: "CM", dial: "+237", flag: "🇨🇲", digits: 9, groups: [1, 2, 2, 2, 2] },
+  { code: "CI", dial: "+225", flag: "🇨🇮", digits: 10, groups: [2, 2, 2, 2, 2] },
+  { code: "SN", dial: "+221", flag: "🇸🇳", digits: 9, groups: [2, 3, 2, 2] },
+  { code: "GA", dial: "+241", flag: "🇬🇦", digits: 8, groups: [2, 2, 2, 2] },
+  { code: "CG", dial: "+242", flag: "🇨🇬", digits: 9, groups: [2, 3, 2, 2] },
+  { code: "CD", dial: "+243", flag: "🇨🇩", digits: 9, groups: [3, 3, 3] },
+  { code: "BF", dial: "+226", flag: "🇧🇫", digits: 8, groups: [2, 2, 2, 2] },
+  { code: "ML", dial: "+223", flag: "🇲🇱", digits: 8, groups: [2, 2, 2, 2] },
+  { code: "BJ", dial: "+229", flag: "🇧🇯", digits: 10, groups: [2, 2, 2, 2, 2] },
+  { code: "TG", dial: "+228", flag: "🇹🇬", digits: 8, groups: [2, 2, 2, 2] },
+  { code: "TD", dial: "+235", flag: "🇹🇩", digits: 8, groups: [2, 2, 2, 2] },
+  { code: "FR", dial: "+33", flag: "🇫🇷", digits: 9, groups: [1, 2, 2, 2, 2] },
+  { code: "BE", dial: "+32", flag: "🇧🇪", digits: 9, groups: [3, 2, 2, 2] },
+  { code: "CA", dial: "+1", flag: "🇨🇦", digits: 10, groups: [3, 3, 4] },
+]`,computed:!1}},defaultCountry:{required:!1,tsType:{name:"string"},description:"Pays présélectionné, par code ISO."},lockCountry:{required:!1,tsType:{name:"boolean"},description:"Verrouille le pays et masque le sélecteur.",defaultValue:{value:"false",computed:!1}},countrySelectProps:{required:!1,tsType:{name:"Partial",elements:[{name:"Omit",elements:[{name:"SelectProps"},{name:"union",raw:'"value" | "defaultValue" | "options" | "children" | "onValueChange" | "disabled"',elements:[{name:"literal",value:'"value"'},{name:"literal",value:'"defaultValue"'},{name:"literal",value:'"options"'},{name:"literal",value:'"children"'},{name:"literal",value:'"onValueChange"'},{name:"literal",value:'"disabled"'}]}],raw:`Omit<
+  SelectProps,
+  "value" | "defaultValue" | "options" | "children" | "onValueChange" | "disabled"
+>`}],raw:`Partial<
+  Omit<
+    SelectProps,
+    "value" | "defaultValue" | "options" | "children" | "onValueChange" | "disabled"
+  >
+>`},description:"Le sélecteur d'indicatif : placement, recherche, rendu, classe.\n\nLa valeur, les options et le rappel viennent de `countries` et du\nnuméro ; `disabled` suit celui du champ — pour figer le pays seul,\n`lockCountry`."}},composes:["Omit"]};export{M as D,N as P};

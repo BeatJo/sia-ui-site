@@ -1,0 +1,1 @@
+.sia-permission-matrix{display:grid;gap:1rem}.sia-permission-matrix__group{min-width:0;margin:0;padding:1rem;border:1px solid var(--sia-border);border-radius:var(--sia-radius-md)}.sia-permission-matrix__group legend{padding:0 .25rem;font-weight:600}.sia-permission-matrix__actions{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;margin-top:.75rem}

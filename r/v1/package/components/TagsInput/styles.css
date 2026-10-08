@@ -1,0 +1,2 @@
+.sia-tags-input { display:flex; align-items:center; gap:.35rem; min-height:2.5rem; padding:.35rem .5rem; border:1px solid var(--sia-border); border-radius:var(--sia-radius); background:var(--sia-background); flex-wrap:wrap; }
+.sia-tags-input > input { flex:1; min-width:8rem; border:0; outline:0; background:transparent; font:inherit; }

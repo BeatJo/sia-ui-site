@@ -1,0 +1,2 @@
+.sia-code-editor small.is-valid { color:var(--sia-success); }
+.sia-code-editor small.is-invalid { color:var(--sia-danger); }

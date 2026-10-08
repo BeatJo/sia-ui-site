@@ -1,0 +1,5 @@
+import{j as s}from"./iframe-Ce1rQf5z.js";import{B as t}from"./index-DpravLuC.js";import{P as o}from"./index-C6JFQuv2.js";import"./preload-helper-PPVm8Dsz.js";import"./classname-nB6WhpaV.js";import"./index-CT5IUcQd.js";import"./index-B-eTA3Tj.js";import"./geometry-Dzgyg8gY.js";import"./index-C8A0LU9j.js";import"./index-D2QN4V95.js";function n({allowed:a}){return s.jsx(o,{permissions:a?["payments.write"]:[],require:"payments.write",fallback:s.jsx("span",{children:"Accès insuffisant"}),children:s.jsx(t,{children:"Valider le paiement"})})}const P={title:"Patterns/PermissionGate",component:n,tags:["autodocs"],args:{allowed:!0},parameters:{layout:"centered"}},e={},r={args:{allowed:!1}};e.parameters={...e.parameters,docs:{...e.parameters?.docs,source:{originalSource:"{}",...e.parameters?.docs?.source}}};r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`{
+  args: {
+    allowed: false
+  }
+}`,...r.parameters?.docs?.source}}};const j=["Playground","Denied"];export{r as Denied,e as Playground,j as __namedExportsOrder,P as default};
