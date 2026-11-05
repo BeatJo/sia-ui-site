@@ -1,0 +1,57 @@
+.sia-tooltip-trigger {
+  display: inline-flex;
+}
+
+.sia-tooltip {
+  position: fixed;
+  z-index: 1500;
+  width: max-content;
+  max-width: 16rem;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid transparent;
+  border-radius: 0.4rem;
+  line-height: 1.35;
+  pointer-events: none;
+  animation: sia-tooltip-in 120ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.sia-tooltip-size-sm { font-size: 0.7rem; }
+.sia-tooltip-size-md { font-size: 0.75rem; }
+.sia-tooltip-size-lg { font-size: 0.85rem; padding: 0.45rem 0.7rem; }
+
+.sia-tooltip-solid {
+  color: var(--sia-background, #fff);
+  background: var(--sia-foreground, #0f172a);
+}
+
+.sia-tooltip-outline {
+  color: var(--sia-foreground, #0f172a);
+  background: var(--sia-background, #fff);
+  border-color: var(--sia-border, #e2e8f0);
+  box-shadow: 0 8px 24px rgb(15 23 42 / 0.12);
+}
+
+/* Le ton neutre manquait : il tombait sur le `solid` par défaut, ce qui
+   marchait par accident. Il est désormais écrit. */
+.sia-tooltip-neutral.sia-tooltip-solid { background: var(--sia-foreground); }
+.sia-tooltip-primary.sia-tooltip-solid { background: var(--sia-primary, #2563eb); }
+.sia-tooltip-danger.sia-tooltip-solid { background: var(--sia-danger, #dc2626); }
+.sia-tooltip-success.sia-tooltip-solid { background: var(--sia-success, #059669); }
+.sia-tooltip-warning.sia-tooltip-solid { background: var(--sia-warning, #d97706); }
+.sia-tooltip-info.sia-tooltip-solid { background: var(--sia-info, #0284c7); }
+
+.sia-tooltip-neutral.sia-tooltip-outline { color: var(--sia-foreground); }
+.sia-tooltip-primary.sia-tooltip-outline { color: var(--sia-primary, #2563eb); border-color: currentColor; }
+.sia-tooltip-danger.sia-tooltip-outline { color: var(--sia-danger, #dc2626); border-color: currentColor; }
+.sia-tooltip-success.sia-tooltip-outline { color: var(--sia-success, #059669); border-color: currentColor; }
+.sia-tooltip-warning.sia-tooltip-outline { color: var(--sia-warning, #d97706); border-color: currentColor; }
+.sia-tooltip-info.sia-tooltip-outline { color: var(--sia-info, #0284c7); border-color: currentColor; }
+
+@keyframes sia-tooltip-in {
+  from { opacity: 0; transform: translateY(2px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sia-tooltip { animation-duration: 0.01ms; }
+}

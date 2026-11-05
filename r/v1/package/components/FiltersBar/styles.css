@@ -1,0 +1,13 @@
+.sia-filters-bar { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; padding:1rem; border:1px solid var(--sia-border); border-radius:calc(var(--sia-radius) * 1.25); background:var(--sia-surface); }
+.sia-filters-bar__main,.sia-filters-bar__filters,.sia-filters-bar__actions { display:flex; align-items:center; gap:.75rem; flex-wrap:wrap; }
+.sia-filters-bar__main { flex:1; min-width:min(100%,18rem); }
+.sia-filters-bar__search { flex:1; min-width:min(100%,16rem); }
+/* Les filtres occupent la place restante et s'y rangent en ligne : sans
+   cela le conteneur gardait la largeur de son contenu, et deux `Select` en
+   largeur pleine s'empilaient au lieu de s'aligner. Chaque filtre garde sa
+   largeur de base — une liste de 60rem pour trois options serait absurde —
+   et passe à la ligne quand la place manque. */
+.sia-filters-bar__filters { flex:1 1 auto; min-width:0; }
+.sia-filters-bar__filters > * { flex:0 1 var(--sia-filter-width,12rem); min-width:0; max-width:100%; }
+.sia-filters-bar__count { color:var(--sia-muted); font-size:.8rem; font-weight:650; }
+.sia-filters-bar__reset { border:0; color:var(--sia-primary); background:transparent; font:inherit; font-weight:650; cursor:pointer; }

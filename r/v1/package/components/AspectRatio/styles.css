@@ -1,0 +1,15 @@
+.sia-aspect-ratio {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--sia-radius);
+  aspect-ratio: var(--sia-aspect, 1.7778);
+}
+
+/* Ce qui est placé dedans remplit la boîte : une image au rapport légèrement
+   différent est recadrée plutôt que déformée. */
+.sia-aspect-ratio > * {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

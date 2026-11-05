@@ -1,0 +1,26 @@
+.sia-hover-card-anchor { display: inline-flex; }
+
+.sia-hover-card {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.sia-hover-card__body {
+  max-width: calc(100vw - 2rem);
+  padding: .875rem 1rem;
+  border: 1px solid var(--sia-border);
+  border-radius: calc(var(--sia-radius) + 2px);
+  background: var(--sia-surface-raised);
+  box-shadow: var(--sia-elevation-overlay);
+  color: var(--sia-foreground);
+  font-size: .875rem;
+  line-height: 1.5;
+  animation: sia-hover-card-in var(--sia-duration-base) var(--sia-easing-entrance);
+}
+
+@keyframes sia-hover-card-in {
+  from { opacity: 0; transform: translateY(6px) scale(.98); }
+  to { opacity: 1; transform: none; }
+}
