@@ -1,0 +1,1 @@
+import{u as r,a as o,r as u}from"./iframe-D9A-l6Om.js";import{s as n,g as e}from"./config-BYtg1vzt.js";function l(){return u.useSyncExternalStore(n,e,e)}function f(t="number"){const a=l(),s=r();return o()?s.language:t==="date"?a.dateLocale??a.locale:a.locale}export{l as a,f as u};

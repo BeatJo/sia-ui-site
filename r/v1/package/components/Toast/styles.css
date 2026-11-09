@@ -1,0 +1,175 @@
+.sia-toaster {
+  position: fixed;
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  gap: .625rem;
+  width: min(var(--sia-toaster-width, 24rem), calc(100vw - 2rem));
+  padding: var(--sia-toaster-offset, 1rem);
+  /* La pile ne doit pas voler les clics à la page; chaque annonce les reprend. */
+  pointer-events: none;
+}
+.sia-toaster > * { pointer-events: auto; }
+
+.sia-toaster--top-left { top: 0; left: 0; }
+.sia-toaster--top-center { top: 0; left: 50%; transform: translateX(-50%); }
+.sia-toaster--top-right { top: 0; right: 0; }
+.sia-toaster--bottom-left { bottom: 0; left: 0; }
+.sia-toaster--bottom-center { bottom: 0; left: 50%; transform: translateX(-50%); }
+.sia-toaster--bottom-right { bottom: 0; right: 0; }
+
+.sia-toast {
+  --sia-toast-color: var(--sia-muted);
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  overflow: hidden;
+  padding: .875rem 1rem;
+  border: 1px solid var(--sia-border);
+  border-radius: calc(var(--sia-radius) + 2px);
+  background: var(--sia-surface-raised);
+  box-shadow: var(--sia-elevation-overlay);
+  /* Le balayage ne doit pas déclencher le défilement de la page. */
+  touch-action: none;
+  user-select: none;
+}
+
+.sia-toast[data-state="open"] {
+  animation: sia-toast-in var(--sia-duration-slow) var(--sia-easing-spring) both;
+}
+
+/* La sortie est plus courte que l'entrée : ce qui arrive se remarque, ce qui
+   part ne doit pas se faire attendre. */
+.sia-toast[data-state="closed"] {
+  animation: sia-toast-out var(--sia-duration-base) var(--sia-easing-exit) forwards;
+  pointer-events: none;
+}
+
+/* Pendant le geste, la carte suit le doigt sans transition : une interpolation
+   donnerait un retard visible entre le pointeur et la carte. */
+.sia-toast[data-swiping] { transition: none; cursor: grabbing; }
+.sia-toast:not([data-swiping]) {
+  transition:
+    transform var(--sia-duration-base) var(--sia-easing-standard),
+    opacity var(--sia-duration-base) var(--sia-easing-standard);
+}
+
+@keyframes sia-toast-in {
+  from { opacity: 0; transform: translate3d(var(--sia-toast-from, 110%), 0, 0) scale(.96); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes sia-toast-out {
+  from { opacity: 1; transform: none; max-height: 10rem; }
+  to { opacity: 0; transform: translate3d(0, -.5rem, 0) scale(.94); max-height: 0; margin-top: -.625rem; padding-block: 0; }
+}
+
+.sia-toast--from-right { --sia-toast-from: 110%; }
+.sia-toast--from-left { --sia-toast-from: -110%; }
+.sia-toast--from-center { --sia-toast-from: 0; }
+
+.sia-toast__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  font-size: .875rem;
+  background: color-mix(in srgb, var(--sia-toast-color) 14%, transparent);
+  color: var(--sia-toast-color);
+  /* L'icône entre après le panneau : l'œil suit le bloc, puis le signe. */
+  animation: sia-toast-icon var(--sia-duration-slow) var(--sia-easing-spring) both;
+  animation-delay: 60ms;
+}
+@keyframes sia-toast-icon {
+  from { opacity: 0; transform: scale(.4); }
+  to { opacity: 1; transform: none; }
+}
+
+.sia-toast__body { flex: 1; display: grid; gap: .15rem; min-width: 0; }
+.sia-toast__title { color: var(--sia-foreground); font-size: .9rem; line-height: 1.35; }
+.sia-toast__description { margin: 0; color: var(--sia-muted); font-size: .825rem; line-height: 1.45; }
+
+.sia-toast__actions { display: flex; align-items: center; gap: .5rem; margin-top: .4rem; }
+
+.sia-toast__action,
+.sia-toast__cancel {
+  padding: .3rem .65rem;
+  border-radius: var(--sia-radius);
+  font-size: .8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color var(--sia-duration-fast) var(--sia-easing-standard),
+    color var(--sia-duration-fast) var(--sia-easing-standard);
+}
+
+/* L'action principale porte la couleur du ton : c'est le geste qu'on attend
+   de la personne, et il doit se voir sans lire. */
+.sia-toast__action {
+  border: 1px solid color-mix(in srgb, var(--sia-toast-color) 32%, transparent);
+  background: color-mix(in srgb, var(--sia-toast-color) 12%, transparent);
+  color: var(--sia-toast-color);
+}
+.sia-toast__action:hover {
+  background: color-mix(in srgb, var(--sia-toast-color) 20%, transparent);
+}
+
+.sia-toast__cancel {
+  border: 0;
+  background: transparent;
+  color: var(--sia-muted);
+}
+.sia-toast__cancel:hover { color: var(--sia-foreground); }
+
+.sia-toast__close {
+  flex: none;
+  padding: .1rem;
+  border: 0;
+  background: transparent;
+  color: var(--sia-muted);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: .6;
+  transition: opacity var(--sia-duration-fast) var(--sia-easing-standard);
+}
+.sia-toast__close:hover { opacity: 1; }
+
+/* La barre de temps : elle dit combien il reste, et se fige au survol — la
+   suspension de la minuterie et l'animation doivent raconter la même chose. */
+.sia-toast__timer {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 2px;
+  transform-origin: left;
+  background: var(--sia-toast-color);
+  opacity: .4;
+  animation: sia-toast-timer linear forwards;
+}
+.sia-toast__timer[data-paused] { animation-play-state: paused; }
+
+@keyframes sia-toast-timer {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}
+
+/* Les tons reprennent ceux d'`Alert` : un même événement doit avoir la même
+   couleur en bandeau dans la page et en annonce flottante. */
+.sia-toast--neutral { --sia-toast-color: var(--sia-muted); }
+.sia-toast--loading { --sia-toast-color: var(--sia-muted); }
+.sia-toast--primary { --sia-toast-color: var(--sia-primary); }
+.sia-toast--info { --sia-toast-color: var(--sia-info); }
+.sia-toast--success { --sia-toast-color: var(--sia-success); }
+.sia-toast--warning { --sia-toast-color: var(--sia-warning); }
+.sia-toast--danger { --sia-toast-color: var(--sia-danger); }
+
+.sia-toast--danger { border-color: color-mix(in srgb, var(--sia-danger) 28%, var(--sia-border)); }
+.sia-toast--loading .sia-toast__icon { background: transparent; }
+
+@media (max-width: 640px) {
+  .sia-toaster { width: 100vw; padding: .75rem; }
+  .sia-toast--from-right,
+  .sia-toast--from-left { --sia-toast-from: 0; }
+}

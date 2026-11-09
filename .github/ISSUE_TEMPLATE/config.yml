@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation SIA UI
+    url: https://beatjo.github.io/sia-ui-site/
+    about: Lire la documentation publiée.
+  - name: Démonstration
+    url: https://beatjo.github.io/sia-ui-site/preview/
+    about: Voir les composants en situation.

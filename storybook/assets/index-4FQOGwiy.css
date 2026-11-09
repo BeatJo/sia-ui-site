@@ -1,0 +1,1 @@
+.sia-aspect-ratio{position:relative;width:100%;overflow:hidden;border-radius:var(--sia-radius);aspect-ratio:var(--sia-aspect, 1.7778)}.sia-aspect-ratio>*{width:100%;height:100%;object-fit:cover}

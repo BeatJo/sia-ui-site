@@ -1,0 +1,58 @@
+/* Une seule colonne, un seul écart : le composant vit dans un tiroir de 28 à
+   40rem, où deux colonnes se marcheraient dessus. */
+.sia-job-progress {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  min-width: 0;
+  color: var(--sia-foreground);
+  font-size: .875rem;
+}
+
+/* Le titre prend la place qui reste ; pastille et durée restent collées à
+   droite, et passent dessous plutôt que d'écraser un titre long. */
+.sia-job-progress__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem;
+  min-width: 0;
+}
+.sia-job-progress__title {
+  flex: 1 1 12rem;
+  min-width: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.sia-job-progress__status { display: inline-flex; flex: none; }
+
+/* Des chiffres de même largeur : la durée qui avance ne fait pas danser la
+   ligne à chaque seconde. */
+.sia-job-progress__duration {
+  flex: none;
+  margin-left: auto;
+  color: var(--sia-muted);
+  font-size: .8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.sia-job-progress__progress { display: grid; gap: .35rem; min-width: 0; }
+.sia-job-progress__bar .sia-progress__label { min-width: 0; overflow-wrap: anywhere; }
+.sia-job-progress__step { color: var(--sia-muted); overflow-wrap: anywhere; }
+
+.sia-job-progress__attempts {
+  color: var(--sia-muted);
+  font-size: .8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.sia-job-progress__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: .5rem;
+}
+
+/* Un journal est souvent large : sans `min-width: 0`, il élargirait la
+   colonne entière au lieu de défiler dans sa propre boîte. */
+.sia-job-progress__logs { min-width: 0; }

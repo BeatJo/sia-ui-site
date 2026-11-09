@@ -1,0 +1,31 @@
+/* Même rythme vertical que la page de liste : en-tête, filtres, tableau,
+   pagination, séparés d'un seul écart. */
+.sia-activity {
+  container: sia-activity / inline-size;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+.sia-activity > .sia-page-header { margin-bottom: 0; }
+
+/* Un filtre a une largeur de lecture, pas toute la barre : quatre filtres
+   tiennent côte à côte avant de passer à la ligne. */
+.sia-activity__filter { width: 12rem; max-width: 100%; }
+
+/* Étroit : chaque filtre prend la ligne, comme la recherche au-dessus —
+   des champs de largeurs différentes empilés donnent un bord droit en
+   escalier. */
+@container sia-activity (max-width: 34rem) {
+  .sia-activity .sia-filters-bar__filters { width: 100%; }
+  .sia-activity__filter { width: 100%; }
+}
+
+.sia-activity__date {
+  color: var(--sia-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.sia-activity__target { display: grid; gap: .1rem; min-width: 0; }
+.sia-activity__target small { color: var(--sia-muted); font-size: .78rem; }

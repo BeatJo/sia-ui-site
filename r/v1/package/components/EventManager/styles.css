@@ -1,0 +1,12 @@
+.sia-event-manager { min-width: 0; }
+
+/* La fiche : les `Descriptions` du système, et la barre du ton à gauche —
+   elle rappelle l'événement cliqué dans la grille. */
+.sia-event-manager__fiche {
+  padding-left: .85rem;
+  border-left: 3px solid var(--ec-tone, var(--sia-primary));
+}
+.sia-event-manager__when { font-weight: 600; }
+.sia-event-manager__description { white-space: pre-line; }
+
+.sia-event-manager__actions { display: flex; justify-content: flex-end; gap: .5rem; width: 100%; }

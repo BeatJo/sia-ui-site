@@ -1,0 +1,21 @@
+.sia-phone__field { font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+
+/* L'indicatif, séparé du numéro par un filet. Choisi dans le `Select` du
+   système, en variante logée : même panneau, même recherche, même clavier
+   que partout ailleurs — là où le `<select>` natif n'offrait ni recherche ni
+   le thème. */
+.sia-phone__country {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding-right: .35rem;
+  border-right: 1px solid var(--sia-border);
+  color: var(--sia-foreground);
+  font-size: .85rem;
+  white-space: nowrap;
+}
+.sia-phone__country .sia-select__trigger { align-self: stretch; }
+
+.sia-phone__value { display: inline-flex; align-items: center; gap: .3rem; }
+.sia-phone__flag { font-size: 1.05rem; line-height: 1; }
+.sia-phone__dial { color: var(--sia-muted); font-variant-numeric: tabular-nums; }
