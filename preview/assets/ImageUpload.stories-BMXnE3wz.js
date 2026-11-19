@@ -1,0 +1,1 @@
+import{aW as a}from"./index-b2DKtdV1.js";const e={title:"Saisie/ImageUpload",component:a,tags:["autodocs"],args:{label:"Ajouter une image",description:"PNG ou JPG, 5 Mo maximum"},parameters:{layout:"padded"}},t={};export{t as Playground,e as default};

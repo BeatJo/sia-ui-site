@@ -1,0 +1,1 @@
+import"./index-b2DKtdV1.js";import{T as e}from"./index-CQvJIaf4.js";const o={title:"Dates et heures/TimeRangePicker",component:e,tags:["autodocs"],args:{defaultValue:{start:"08:00",end:"17:30"},minuteStep:15,tone:"primary"},parameters:{layout:"padded"}},r={},n={args:{needConfirm:!0,tone:"info"}};export{r as Playground,n as WithConfirmation,o as default};

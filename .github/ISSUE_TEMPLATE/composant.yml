@@ -1,0 +1,58 @@
+name: Composant ou variante
+description: Proposer une entrée, ou une variante d'une entrée existante.
+labels: ["composant"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        SIA UI n'ajoute pas un composant parce qu'il existe ailleurs, mais
+        parce qu'un besoin **se répète**. La question décisive est donc : où
+        l'as-tu déjà réécrit ?
+
+  - type: input
+    id: nom
+    attributes:
+      label: Nom proposé
+      placeholder: tree-select
+    validations:
+      required: true
+
+  - type: textarea
+    id: repetition
+    attributes:
+      label: Où ce besoin s'est-il déjà présenté ?
+      description: >
+        Combien de fois, et dans quels contextes. Décris les usages, pas les
+        noms de tes applications — ce dépôt est publié.
+    validations:
+      required: true
+
+  - type: textarea
+    id: differences
+    attributes:
+      label: Ce qui différait d'une fois à l'autre
+      description: >
+        C'est ce qui devient une prop, ou ce qui ne doit surtout pas être
+        uniformisé. Souvent la partie la plus utile de la demande.
+
+  - type: dropdown
+    id: niveau
+    attributes:
+      label: Niveau
+      description: Voir « Choisir le bon emplacement » dans docs/contribuer/conventions.md.
+      options:
+        - Primitive — un élément d'interface
+        - Composant — assemble des primitives
+        - Pattern — résout un cas métier
+        - Je ne sais pas
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: verifs
+    attributes:
+      label: Vérifications
+      options:
+        - label: J'ai cherché dans le catalogue publié, l'entrée n'existe pas.
+          required: true
+        - label: Ce besoin ne dépend d'aucune librairie tierce imposée.

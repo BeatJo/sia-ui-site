@@ -1,0 +1,1 @@
+import"./index-b2DKtdV1.js";import{M as a}from"./index-Cx7OZ5cD.js";const o={title:"Dates et heures/MiniCalendar",component:a,tags:["autodocs"],args:{defaultValue:"2026-06-14"},parameters:{layout:"padded"}},r={};export{r as Playground,o as default};

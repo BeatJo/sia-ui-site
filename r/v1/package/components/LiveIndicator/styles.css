@@ -1,0 +1,41 @@
+.sia-live {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  color: var(--sia-muted);
+  font-size: .8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.sia-live__dot {
+  position: relative;
+  width: .5rem;
+  height: .5rem;
+  border-radius: 9999px;
+  background: var(--sia-border-strong);
+}
+.sia-live--open { color: var(--sia-success); }
+.sia-live--open .sia-live__dot { background: var(--sia-success); }
+/* Un halo qui s'étend et s'efface : vivant sans être agité. */
+.sia-live--open .sia-live__dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  animation: sia-live-halo 1.8s var(--sia-easing-standard) infinite;
+}
+.sia-live--connecting .sia-live__dot {
+  background: var(--sia-warning);
+  animation: sia-live-blink 1s steps(2, jump-none) infinite;
+}
+@keyframes sia-live-halo {
+  from { opacity: .6; transform: scale(1); }
+  to { opacity: 0; transform: scale(2.6); }
+}
+@keyframes sia-live-blink {
+  50% { opacity: .35; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sia-live__dot, .sia-live__dot::after { animation: none; }
+}

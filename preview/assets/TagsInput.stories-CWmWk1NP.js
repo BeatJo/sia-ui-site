@@ -1,0 +1,1 @@
+import{bH as a}from"./index-b2DKtdV1.js";const e={title:"Saisie/TagsInput",component:a,tags:["autodocs"],args:{defaultValue:["finance","admin"],placeholder:"Ajouter un tag"},parameters:{layout:"padded"}},o={};export{o as Playground,e as default};

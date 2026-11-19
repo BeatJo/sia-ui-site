@@ -1,0 +1,360 @@
+/* ── Le calendrier ────────────────────────────────────────────────────────
+   Chaque ton pose deux variables — sa couleur, et le texte lisible dessus —
+   que les trois habillages d'événement combinent. Aucune couleur n'est écrite
+   deux fois. */
+.sia-ec {
+  --ec-cell: 7.25rem;
+  --ec-hour: 3rem;
+  --ec-gutter: 3.5rem;
+  --ec-line: var(--sia-border);
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  width: 100%;
+  min-width: 0;
+  color: var(--sia-foreground);
+  font-size: .875rem;
+}
+.sia-ec--dense { --ec-cell: 5.5rem; --ec-hour: 2.25rem; font-size: .8125rem; }
+
+/* La part du ton dans un fond doux. Sur fond sombre, 14 % donnait un ruban
+   presque noir : il en faut davantage pour qu'il se lise comme une couleur. */
+.sia-ec { --ec-soft: 14%; --ec-soft-text: 75%; }
+[data-sia-color-mode="dark"] .sia-ec { --ec-soft: 26%; --ec-soft-text: 55%; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-sia-color-mode="light"]) .sia-ec { --ec-soft: 26%; --ec-soft-text: 55%; }
+}
+.sia-ec--loading { opacity: .6; transition: opacity var(--sia-duration-base) var(--sia-easing-standard); }
+
+/* ── Barre ────────────────────────────────────────────────────────────── */
+.sia-ec__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem 1rem;
+}
+.sia-ec__nav, .sia-ec__tools { display: flex; align-items: center; gap: .35rem; }
+.sia-ec__tools { flex-wrap: wrap; gap: .5rem; }
+.sia-ec__period {
+  margin: 0 0 0 .5rem;
+  font-size: 1.125rem;
+  font-weight: 650;
+  letter-spacing: -.01em;
+  white-space: nowrap;
+}
+/* Le sélecteur de vue est un `RadioGroup` en boutons : il apporte son
+   dessin ; seul le cadre natif du fieldset est retiré. */
+.sia-ec__views { margin: 0; padding: 0; border: 0; min-width: 0; }
+.sia-ec__views .sia-radio-button { min-height: 2rem; font-size: .8125rem; }
+
+/* ── Tons ─────────────────────────────────────────────────────────────── */
+.sia-ec__event--primary, .sia-ec__dot--primary { --ec-tone: var(--sia-primary); --ec-on: var(--sia-primary-foreground); }
+.sia-ec__event--neutral, .sia-ec__dot--neutral { --ec-tone: var(--sia-muted); --ec-on: var(--sia-background); }
+.sia-ec__event--info, .sia-ec__dot--info { --ec-tone: var(--sia-info); --ec-on: var(--sia-info-foreground); }
+.sia-ec__event--success, .sia-ec__dot--success { --ec-tone: var(--sia-success); --ec-on: var(--sia-success-foreground); }
+.sia-ec__event--warning, .sia-ec__dot--warning { --ec-tone: var(--sia-warning); --ec-on: var(--sia-warning-foreground); }
+.sia-ec__event--danger, .sia-ec__dot--danger { --ec-tone: var(--sia-danger); --ec-on: var(--sia-danger-foreground); }
+.sia-ec__event--secondary, .sia-ec__dot--secondary { --ec-tone: var(--sia-secondary); --ec-on: var(--sia-secondary-foreground); }
+
+/* ── Un événement ─────────────────────────────────────────────────────── */
+.sia-ec__event, .sia-ec__slot {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  width: 100%;
+  min-width: 0;
+  padding: .15rem .4rem;
+  border: 1px solid transparent;
+  border-radius: calc(var(--sia-radius) * .75);
+  color: var(--sia-foreground);
+  background: transparent;
+  font: inherit;
+  font-size: .75rem;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color var(--sia-duration-fast) var(--sia-easing-standard),
+    filter var(--sia-duration-fast) var(--sia-easing-standard);
+}
+.sia-ec__event:focus-visible, .sia-ec__slot:focus-visible, .sia-ec__more:focus-visible {
+  outline: 2px solid var(--sia-primary);
+  outline-offset: 1px;
+}
+.sia-ec__time { flex: none; color: var(--sia-muted); font-variant-numeric: tabular-nums; }
+.sia-ec__title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 550; }
+.sia-ec__dot { flex: none; width: .45rem; height: .45rem; border-radius: 9999px; background: var(--ec-tone); }
+
+/* Un rendez-vous : un point de couleur, l'heure, le titre — sur fond neutre. */
+.sia-ec__event--timed:hover { background: color-mix(in srgb, var(--ec-tone) 10%, transparent); }
+
+/* Une journée entière, ou plusieurs : une barre du ton. */
+.sia-ec--events-soft .sia-ec__event--bar,
+.sia-ec--events-soft .sia-ec__slot {
+  color: color-mix(in srgb, var(--ec-tone) var(--ec-soft-text), var(--sia-foreground));
+  background: color-mix(in srgb, var(--ec-tone) var(--ec-soft), var(--sia-background));
+  border-left: 3px solid var(--ec-tone);
+}
+.sia-ec--events-solid .sia-ec__event--bar,
+.sia-ec--events-solid .sia-ec__slot {
+  color: var(--ec-on);
+  background: var(--ec-tone);
+}
+.sia-ec--events-solid .sia-ec__event--bar .sia-ec__time,
+.sia-ec--events-solid .sia-ec__slot .sia-ec__slot-time { color: inherit; opacity: .85; }
+.sia-ec--events-outline .sia-ec__event--bar,
+.sia-ec--events-outline .sia-ec__slot {
+  color: color-mix(in srgb, var(--ec-tone) 80%, var(--sia-foreground));
+  background: var(--sia-background);
+  border-color: color-mix(in srgb, var(--ec-tone) 55%, transparent);
+}
+.sia-ec__event--bar:hover, .sia-ec__slot:hover { filter: brightness(.96); }
+
+/* Une barre qui déborde sur la veille ou le lendemain touche le bord de la
+   case : elle se lit comme un seul ruban d'un jour à l'autre. */
+.sia-ec__event--continues-before { margin-left: -.35rem; width: calc(100% + .35rem); border-top-left-radius: 0; border-bottom-left-radius: 0; border-left-width: 0; }
+.sia-ec__event--continues-after { margin-right: -.35rem; width: calc(100% + .35rem); border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.sia-ec__event--continues-before.sia-ec__event--continues-after { width: calc(100% + .7rem); }
+
+/* ── Mois ─────────────────────────────────────────────────────────────── */
+.sia-ec__month {
+  display: grid;
+  overflow: hidden;
+  border: 1px solid var(--ec-line);
+  border-radius: calc(var(--sia-radius) + 4px);
+  background: var(--sia-background);
+}
+.sia-ec__weekdays, .sia-ec__week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); }
+.sia-ec__weekday {
+  padding: .5rem .6rem;
+  border-bottom: 1px solid var(--ec-line);
+  color: var(--sia-muted);
+  font-size: .72rem;
+  font-weight: 650;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+.sia-ec__day {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  min-width: 0;
+  min-height: var(--ec-cell);
+  padding: .35rem .35rem .45rem;
+  border-right: 1px solid var(--ec-line);
+  border-bottom: 1px solid var(--ec-line);
+  cursor: pointer;
+  transition: background-color var(--sia-duration-fast) var(--sia-easing-standard);
+}
+.sia-ec__week > .sia-ec__day:last-child { border-right: 0; }
+.sia-ec__week:last-child > .sia-ec__day { border-bottom: 0; }
+.sia-ec__day:hover { background: color-mix(in srgb, var(--sia-primary) 4%, transparent); }
+.sia-ec__day:focus-visible { outline: 2px solid var(--sia-primary); outline-offset: -2px; }
+.sia-ec__day--weekend { background: color-mix(in srgb, var(--sia-surface) 55%, transparent); }
+.sia-ec__day--outside .sia-ec__day-number { color: color-mix(in srgb, var(--sia-muted) 60%, transparent); }
+/* Estompés, pas effacés : un événement du mois voisin reste un événement. */
+.sia-ec__day--outside .sia-ec__events { opacity: .72; }
+.sia-ec__day-number {
+  display: inline-grid;
+  place-items: center;
+  align-self: flex-start;
+  min-width: 1.6rem;
+  height: 1.6rem;
+  padding: 0 .3rem;
+  border-radius: 9999px;
+  font-size: .8rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.sia-ec__day--today .sia-ec__day-number { color: var(--sia-primary-foreground); background: var(--sia-primary); }
+.sia-ec__events { display: grid; gap: 2px; min-width: 0; }
+/* « +N autres » : un `Button` fantôme, ramené à la hauteur d'une ligne
+   d'événement pour ne pas agrandir la case qui déborde déjà. */
+.sia-ec__more.sia-button {
+  justify-self: start;
+  min-height: 1.35rem;
+  padding: 0 .4rem;
+  color: var(--sia-muted);
+  font-size: .72rem;
+  font-weight: 600;
+}
+.sia-ec__more.sia-button:hover { color: var(--sia-foreground); }
+
+/* Variante minimale : aucune ligne intérieure, les jours se lisent à leur
+   numéro ; la case survolée se dessine seule. */
+.sia-ec--minimal .sia-ec__month { border-color: transparent; }
+.sia-ec--minimal .sia-ec__day { border-color: transparent; border-radius: calc(var(--sia-radius) + 2px); }
+.sia-ec--minimal .sia-ec__day--weekend { background: transparent; }
+.sia-ec--minimal .sia-ec__weekday { border-bottom-color: transparent; }
+
+/* Variante douce : des cases teintées, séparées par des blancs. */
+.sia-ec--soft .sia-ec__month { gap: 4px; border: 0; background: transparent; }
+.sia-ec--soft .sia-ec__week { gap: 4px; }
+.sia-ec--soft .sia-ec__weekday { border: 0; }
+.sia-ec--soft .sia-ec__day { border: 0; border-radius: calc(var(--sia-radius) + 2px); background: var(--sia-surface); }
+.sia-ec--soft .sia-ec__day:hover { background: color-mix(in srgb, var(--sia-primary) 7%, var(--sia-surface)); }
+.sia-ec--soft .sia-ec__day--outside { background: color-mix(in srgb, var(--sia-surface) 45%, transparent); }
+
+/* ── Grille horaire : semaine et jour ─────────────────────────────────── */
+.sia-ec__timegrid {
+  display: grid;
+  overflow: hidden;
+  border: 1px solid var(--ec-line);
+  border-radius: calc(var(--sia-radius) + 4px);
+  background: var(--sia-background);
+}
+.sia-ec__tg-head, .sia-ec__tg-allday, .sia-ec__tg-body {
+  display: grid;
+  grid-template-columns: var(--ec-gutter) repeat(var(--sia-ec-days, 7), minmax(0, 1fr));
+}
+.sia-ec__tg-head { border-bottom: 1px solid var(--ec-line); }
+.sia-ec__tg-gutter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 .5rem;
+  color: var(--sia-muted);
+  font-size: .68rem;
+}
+.sia-ec__tg-dayhead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .1rem;
+  padding: .45rem 0;
+  border: 0;
+  border-left: 1px solid var(--ec-line);
+  color: var(--sia-muted);
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+.sia-ec__tg-dayhead:hover { background: var(--sia-surface); }
+.sia-ec__tg-weekday { font-size: .72rem; font-weight: 650; text-transform: uppercase; letter-spacing: .03em; }
+.sia-ec__tg-daynum {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 9999px;
+  color: var(--sia-foreground);
+  font-size: 1rem;
+  font-weight: 650;
+}
+.sia-ec__tg-dayhead--today .sia-ec__tg-weekday { color: var(--sia-primary); }
+.sia-ec__tg-dayhead--today .sia-ec__tg-daynum { color: var(--sia-primary-foreground); background: var(--sia-primary); }
+
+.sia-ec__tg-allday { border-bottom: 1px solid var(--ec-line); }
+.sia-ec__tg-allday-cell {
+  display: grid;
+  align-content: start;
+  gap: 2px;
+  min-height: 1.9rem;
+  padding: 3px;
+  border-left: 1px solid var(--ec-line);
+}
+
+.sia-ec__tg-body {
+  position: relative;
+  max-height: calc(var(--ec-hour) * 11);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.sia-ec__tg-hours { display: grid; grid-auto-rows: var(--ec-hour); }
+.sia-ec__hour {
+  position: relative;
+  top: -.5em;
+  padding-right: .5rem;
+  color: var(--sia-muted);
+  font-size: .68rem;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+/* Une colonne, ses lignes d'heure et de demi-heure dessinées par le fond :
+   quarante-huit bordures de moins par jour. */
+.sia-ec__tg-col {
+  position: relative;
+  height: calc(var(--ec-hour) * 24);
+  border-left: 1px solid var(--ec-line);
+  background-image:
+    linear-gradient(to bottom, var(--ec-line) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--ec-line) 45%, transparent) 1px, transparent 1px);
+  background-size: 100% var(--ec-hour), 100% var(--ec-hour);
+  background-position: 0 0, 0 calc(var(--ec-hour) / 2);
+  cursor: cell;
+}
+.sia-ec__tg-col--today { background-color: color-mix(in srgb, var(--sia-primary) 3%, transparent); }
+
+.sia-ec__slot {
+  position: absolute;
+  z-index: 1;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0;
+  overflow: hidden;
+  padding: .2rem .4rem;
+  box-shadow: 0 0 0 1px var(--sia-background);
+}
+.sia-ec__slot-title { overflow: hidden; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+.sia-ec__slot-time { overflow: hidden; font-size: .68rem; opacity: .8; text-overflow: ellipsis; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* L'heure qui passe. */
+.sia-ec__now {
+  position: absolute;
+  z-index: 2;
+  left: -4px;
+  right: 0;
+  height: 2px;
+  background: var(--sia-danger);
+  pointer-events: none;
+}
+.sia-ec__now::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: var(--sia-danger);
+}
+
+.sia-ec--minimal .sia-ec__timegrid { border-color: transparent; }
+.sia-ec--soft .sia-ec__timegrid { background: var(--sia-surface); border-color: transparent; }
+
+/* ── Agenda ───────────────────────────────────────────────────────────── */
+.sia-ec__agenda { display: grid; gap: 1rem; }
+.sia-ec__agenda-day { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: .5rem 1rem; }
+.sia-ec__agenda-date { margin: .2rem 0 0; color: var(--sia-muted); font-size: .8rem; font-weight: 650; }
+.sia-ec__agenda-date--today { color: var(--sia-primary); }
+.sia-ec__agenda-row { display: flex; align-items: center; gap: .75rem; min-width: 0; }
+.sia-ec__agenda-row .sia-ec__event { flex: 1 1 auto; padding: .45rem .6rem; font-size: .85rem; }
+.sia-ec__location { flex: none; max-width: 40%; overflow: hidden; color: var(--sia-muted); font-size: .8rem; text-overflow: ellipsis; white-space: nowrap; }
+.sia-ec__list { display: grid; gap: 3px; min-width: 0; }
+.sia-ec__empty, .sia-ec__empty-day { margin: 0; padding: 1.5rem; color: var(--sia-muted); text-align: center; }
+.sia-ec__empty-day { padding: .75rem 0; text-align: left; }
+
+/* ── Étroit : des points, et la liste du jour choisi ──────────────────── */
+.sia-ec--compact { --ec-cell: 3.25rem; --ec-gutter: 2.75rem; }
+.sia-ec--compact .sia-ec__period { margin-left: .25rem; font-size: 1rem; }
+.sia-ec--compact .sia-ec__day { align-items: center; padding: .3rem .1rem; }
+.sia-ec--compact .sia-ec__day-number { align-self: center; }
+.sia-ec__dots { display: flex; gap: 3px; min-height: .45rem; }
+.sia-ec__dots .sia-ec__dot { width: .35rem; height: .35rem; }
+.sia-ec__day--selected .sia-ec__day-number { box-shadow: inset 0 0 0 2px var(--sia-primary); }
+.sia-ec__day--today.sia-ec__day--selected .sia-ec__day-number { box-shadow: 0 0 0 2px var(--sia-background), 0 0 0 4px var(--sia-primary); }
+.sia-ec--compact .sia-ec__weekday { padding: .4rem 0; text-align: center; }
+.sia-ec--compact .sia-ec__tg-col, .sia-ec--compact .sia-ec__tg-dayhead { min-width: 0; }
+.sia-ec--compact .sia-ec__slot-time { display: none; }
+.sia-ec--compact .sia-ec__agenda-day { grid-template-columns: minmax(0, 1fr); gap: .35rem; }
+
+.sia-ec__selected { display: grid; gap: .5rem; }
+.sia-ec__selected-head { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
+.sia-ec__selected-head h3 { margin: 0; font-size: .95rem; font-weight: 650; }
+.sia-ec__selected .sia-ec__event { padding: .5rem .6rem; font-size: .85rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sia-ec__event, .sia-ec__slot, .sia-ec__day { transition: none; }
+}

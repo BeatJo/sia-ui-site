@@ -1,0 +1,1 @@
+import{r as b,j as e,P as c}from"./index-b2DKtdV1.js";const m=b.forwardRef(({className:s,children:l,required:r,muted:i,tone:a,...t},d)=>e.jsxs("label",{ref:d,className:c("sia-label",i&&"sia-label--muted",a&&`sia-label--${a}`,s),...t,children:[l,r&&e.jsx("span",{className:"sia-label__required","aria-hidden":"true",children:"*"})]}));m.displayName="SiaLabel";export{m as L};

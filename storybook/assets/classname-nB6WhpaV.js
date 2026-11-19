@@ -1,0 +1,1 @@
+function o(r,n){if(n){if(typeof n=="string"||typeof n=="number"){r.push(String(n));return}if(Array.isArray(n)){for(const t of n)o(r,t);return}for(const[t,f]of Object.entries(n))f&&r.push(t)}}function i(...r){const n=[];for(const t of r)o(n,t);return n.join(" ")}function s(r,n){return`${r}--${n}`}export{i as c,s as t};

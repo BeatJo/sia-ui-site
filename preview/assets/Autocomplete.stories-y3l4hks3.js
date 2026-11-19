@@ -1,0 +1,1 @@
+import{g as a}from"./index-b2DKtdV1.js";const e=[{value:"abidjan",label:"Abidjan"},{value:"douala",label:"Douala"},{value:"dakar",label:"Dakar"}],o={title:"Saisie/Autocomplete",component:a,tags:["autodocs"],args:{options:e,placeholder:"Rechercher une ville"},parameters:{layout:"padded"}},t={};export{t as Playground,o as default};

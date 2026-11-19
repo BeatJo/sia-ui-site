@@ -1,0 +1,1 @@
+import"./index-b2DKtdV1.js";import{Q as e}from"./index-CIW8Xjfw.js";const a={title:"Données/QRCode",component:e,tags:["autodocs"],args:{value:"https://sia-ui.dev",size:160},parameters:{layout:"centered"}},s={};export{s as AdapterRequired,a as default};

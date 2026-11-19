@@ -1,0 +1,6 @@
+.sia-statistic { display:grid; gap:.35rem; }
+.sia-statistic__label { color:var(--sia-muted); font-size:.82rem; font-weight:650; }
+.sia-statistic__value { display:flex; align-items:baseline; gap:.3rem; color:var(--sia-foreground); font-size:clamp(1.5rem,3vw,2rem); font-weight:780; letter-spacing:-.03em; }
+.sia-statistic__trend { width:max-content; color:var(--sia-muted); font-size:.8rem; font-weight:700; }
+.sia-statistic__trend--up { color:var(--sia-success); }
+.sia-statistic__trend--down { color:var(--sia-danger); }

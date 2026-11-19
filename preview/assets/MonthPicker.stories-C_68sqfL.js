@@ -1,0 +1,1 @@
+import"./index-b2DKtdV1.js";import{M as t}from"./index-JG1en1yF.js";const o={title:"Dates et heures/MonthPicker",component:t,tags:["autodocs"],args:{defaultValue:"2026-06"},parameters:{layout:"padded"}},r={};export{r as Playground,o as default};

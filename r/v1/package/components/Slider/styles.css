@@ -1,0 +1,53 @@
+.sia-slider {
+  position: relative;
+  width: 100%;
+  height: 32px;
+  user-select: none;
+}
+
+/* Track */
+.sia-slider-track {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 4px;
+  background: var(--sia-color-neutral-200);
+  border-radius: 999px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.sia-slider-range {
+  position: absolute;
+  height: 100%;
+  background: var(--sia-color-primary-500);
+  border-radius: inherit;
+}
+
+/* Thumb */
+.sia-slider-thumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--sia-color-primary-500);
+  border: 2px solid white;
+  cursor: grab;
+}
+
+.sia-slider-thumb:active {
+  cursor: grabbing;
+}
+
+.sia-slider-thumb-trigger {
+  position: absolute;
+  inset: 0;
+}
+
+/* Disabled */
+.sia-slider.is-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

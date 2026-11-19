@@ -1,0 +1,1 @@
+import{bs as t}from"./index-b2DKtdV1.js";const o={title:"Saisie/RichTextEditor",component:t,tags:["autodocs"],args:{defaultValue:"<p>Rédigez une <strong>description</strong>.</p>"},parameters:{layout:"padded"}},a={};export{a as Playground,o as default};

@@ -1,0 +1,1 @@
+import{y as e}from"./index-b2DKtdV1.js";const t={title:"Saisie/ColorPicker",component:e,tags:["autodocs"],args:{defaultValue:"#2563eb",showValue:!0},parameters:{layout:"centered"}},a={};export{a as Playground,t as default};

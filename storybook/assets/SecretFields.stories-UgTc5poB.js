@@ -1,0 +1,9 @@
+import{r as d,j as r}from"./iframe-DPI_H02q.js";import{B as u}from"./index-BLklH4cQ.js";import{S as l,c as S}from"./index-DOsM4lVB.js";import"./preload-helper-PPVm8Dsz.js";import"./classname-nB6WhpaV.js";import"./index-C5ERzGDy.js";import"./index-BM2SoxMf.js";import"./geometry-Dzgyg8gY.js";import"./index-CrMSoNDQ.js";import"./index-Emyj7dyC.js";import"./index-DyNggeyY.js";import"./index-D4LeQ9AA.js";import"./index-CdNNakIf.js";import"./index-DGo_W68r.js";import"./format-CiSXMYGS.js";function g({storedKeys:a,templates:c,strictNames:n,disabled:m}){const[o,i]=d.useState(a.map(p=>({key:p,value:""})));return r.jsxs("div",{style:{display:"grid",gap:16,maxWidth:720},children:[r.jsx(l,{value:o,onValueChange:i,storedKeys:a,templates:c,disabled:m,...n?{keyPattern:/^[A-Z_][A-Z0-9_]*$/,keyPatternMessage:"Majuscules, chiffres et _ uniquement"}:{}}),r.jsx("div",{children:r.jsx(u,{onClick:()=>i(S(o)),children:"Enregistrer"})})]})}const V={title:"Saisie/SecretFields",component:g,tags:["autodocs"],args:{storedKeys:["DATABASE_URL","STRIPE_SECRET_KEY"],templates:["DATABASE_URL","REDIS_URL","SMTP_PASSWORD","API_KEY"],strictNames:!0,disabled:!1},parameters:{layout:"padded"}},s={},e={args:{storedKeys:[]}},t={args:{disabled:!0}};s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:"{}",...s.parameters?.docs?.source}}};e.parameters={...e.parameters,docs:{...e.parameters?.docs,source:{originalSource:`{
+  args: {
+    storedKeys: []
+  }
+}`,...e.parameters?.docs?.source},description:{story:"Aucun secret encore : seul l'ajout et les noms proposés.",...e.parameters?.docs?.description}}};t.parameters={...t.parameters,docs:{...t.parameters?.docs,source:{originalSource:`{
+  args: {
+    disabled: true
+  }
+}`,...t.parameters?.docs?.source}}};const b=["Playground","Vide","Desactive"];export{t as Desactive,s as Playground,e as Vide,b as __namedExportsOrder,V as default};

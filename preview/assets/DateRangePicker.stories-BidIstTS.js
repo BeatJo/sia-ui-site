@@ -1,0 +1,1 @@
+import{K as e}from"./index-b2DKtdV1.js";const a={title:"Dates et heures/DateRangePicker",component:e,tags:["autodocs"],args:{defaultValue:{start:"2026-06-01",end:"2026-06-14"},tone:"primary"},parameters:{layout:"padded"}},s={},o={args:{tone:"success",showWeek:!0}};export{s as Playground,o as SuccessRange,a as default};

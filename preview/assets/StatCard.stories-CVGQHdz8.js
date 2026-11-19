@@ -1,0 +1,1 @@
+import{bC as a}from"./index-b2DKtdV1.js";const t={title:"Patterns/StatCard",component:a,tags:["autodocs"],args:{label:"Transactions",value:1284,trend:.086,icon:"↗",description:"Comparé aux 30 derniers jours"},parameters:{layout:"padded"}},e={},o={args:{label:"Volume traité",value:985e4,format:"currency",currency:"XAF",icon:"#"}};export{o as Currency,e as Playground,t as default};

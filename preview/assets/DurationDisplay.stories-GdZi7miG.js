@@ -1,0 +1,1 @@
+import{a4 as t}from"./index-b2DKtdV1.js";const e={title:"Dates et heures/DurationDisplay",component:t,tags:["autodocs"],args:{milliseconds:7385e3,style:"short",locale:"fr-FR"},parameters:{layout:"centered"}},o={},s={args:{style:"clock"}};export{s as Clock,o as Playground,e as default};

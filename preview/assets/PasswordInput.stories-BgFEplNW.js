@@ -1,0 +1,1 @@
+import{be as e}from"./index-b2DKtdV1.js";const t={title:"Saisie/PasswordInput",component:e,tags:["autodocs"],args:{placeholder:"Mot de passe",showStrength:!0,hideToggle:!1},parameters:{layout:"padded"}},a={},s={args:{placeholder:"Confirmation",showStrength:!1,hideToggle:!0}};export{s as Confirmation,a as Playground,t as default};

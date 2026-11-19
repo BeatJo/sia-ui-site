@@ -1,0 +1,1 @@
+import{r as o,j as p,P as c}from"./index-b2DKtdV1.js";const k=o.forwardRef(({onValueChange:a,invalid:e,className:r,...i},s)=>p.jsx("input",{...i,ref:s,type:"week",className:c("sia-week-picker",e&&"sia-picker--invalid",r),"aria-invalid":e||void 0,onChange:t=>a?.(t.target.value)}));k.displayName="WeekPicker";export{k as W};

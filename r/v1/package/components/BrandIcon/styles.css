@@ -1,0 +1,31 @@
+/* Un glyphe dans le texte : aligné sur la ligne de base comme une lettre,
+   jamais étiré ni rétréci par un parent flex. */
+.sia-brand-icon {
+  display: inline-block;
+  flex: none;
+  vertical-align: -.125em;
+  fill: currentColor;
+}
+
+/* La couleur de la marque arrive par une variable posée sur l'élément : la
+   feuille garde la main pour la retirer là où elle serait illisible. */
+.sia-brand-icon--colored { fill: var(--sia-brand-icon-color, currentColor); }
+
+/* Quasi blanche : illisible sur le thème clair, qui est celui par défaut. */
+.sia-brand-icon--colored.sia-brand-icon--light { fill: currentColor; }
+
+/* Thème sombre, choisi par l'utilisateur ou suivi du système : la marque
+   claire retrouve sa couleur, la marque quasi noire prend celle du texte. */
+[data-sia-color-mode="dark"] .sia-brand-icon--colored.sia-brand-icon--light {
+  fill: var(--sia-brand-icon-color, currentColor);
+}
+[data-sia-color-mode="dark"] .sia-brand-icon--colored.sia-brand-icon--dark { fill: currentColor; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-sia-color-mode="light"]) .sia-brand-icon--colored.sia-brand-icon--light {
+    fill: var(--sia-brand-icon-color, currentColor);
+  }
+  :root:not([data-sia-color-mode="light"]) .sia-brand-icon--colored.sia-brand-icon--dark {
+    fill: currentColor;
+  }
+}

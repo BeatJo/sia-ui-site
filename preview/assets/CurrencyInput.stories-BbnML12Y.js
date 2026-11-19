@@ -1,0 +1,1 @@
+import{F as a}from"./index-b2DKtdV1.js";const r={title:"Saisie/CurrencyInput",component:a,tags:["autodocs"],args:{defaultValue:125e3,currency:"XAF",locale:"fr-FR",invalid:!1},parameters:{layout:"padded"}},t={},u={args:{defaultValue:1299.99,currency:"EUR"}};export{u as Euro,t as Playground,r as default};
