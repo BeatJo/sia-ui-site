@@ -1,0 +1,1 @@
+import{bb as e}from"./index-b2DKtdV1.js";const a=[{value:"admin",label:"Administrateur"},{value:"finance",label:"Finance"},{value:"support",label:"Support"}],l={title:"Saisie/MultiSelect",component:e,tags:["autodocs"],args:{options:a,defaultValue:["finance"],placeholder:"Choisir des rôles"},parameters:{layout:"padded"}},o={};export{o as Playground,l as default};

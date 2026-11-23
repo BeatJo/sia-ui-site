@@ -1,0 +1,1 @@
+import{a5 as t,j as a,B as e}from"./index-b2DKtdV1.js";const r={title:"Patterns/EmptyState",component:t,tags:["autodocs"],args:{icon:"+",title:"Aucun bénéficiaire",description:"Ajoutez un bénéficiaire pour préparer un transfert.",compact:!1},parameters:{layout:"padded"}},n={},s={args:{action:a.jsx(e,{children:"Ajouter"})}};export{n as Playground,s as WithAction,r as default};

@@ -1,0 +1,1 @@
+import{X as e,r as o,j as s}from"./index-b2DKtdV1.js";const c={title:"Saisie/SearchInput",component:e,tags:["autodocs"],args:{placeholder:"Rechercher un client...",clearable:!0},parameters:{layout:"padded"}},l={},u={render:t=>{const[a,r]=o.useState("Abidjan");return s.jsx(e,{...t,value:a,onValueChange:r})}};export{u as Controlled,l as Playground,c as default};

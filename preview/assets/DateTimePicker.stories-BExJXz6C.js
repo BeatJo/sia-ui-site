@@ -1,0 +1,1 @@
+import{M as e}from"./index-b2DKtdV1.js";const a={title:"Dates et heures/DateTimePicker",component:e,tags:["autodocs"],args:{defaultValue:{date:"2026-06-14",time:"14:30"},minuteStep:5,tone:"primary"},parameters:{layout:"padded"}},o={},r={args:{needConfirm:!0,tone:"info"}};export{o as Playground,r as WithConfirmation,a as default};

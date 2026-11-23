@@ -1,0 +1,1 @@
+import"./index-b2DKtdV1.js";import{Y as a}from"./index-C39xaEK3.js";const r={title:"Dates et heures/YearPicker",component:a,tags:["autodocs"],args:{defaultValue:2026,min:2020,max:2030},parameters:{layout:"padded"}},o={};export{o as Playground,r as default};

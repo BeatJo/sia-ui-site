@@ -1,0 +1,1 @@
+import{bc as t}from"./index-b2DKtdV1.js";const a={title:"Saisie/OtpInput",component:t,tags:["autodocs"],args:{length:6,inputMode:"numeric",defaultValue:"2048"},parameters:{layout:"centered"}},o={},s={args:{mask:!0}};export{s as Masked,o as Playground,a as default};

@@ -1,0 +1,1 @@
+import{a_ as t}from"./index-b2DKtdV1.js";const o={title:"Saisie/JsonEditor",component:t,tags:["autodocs"],args:{defaultValue:'{"currency":"XAF","active":true}',rows:8},parameters:{layout:"padded"}},e={};export{e as Playground,o as default};

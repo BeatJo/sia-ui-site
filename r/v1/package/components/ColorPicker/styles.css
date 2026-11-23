@@ -1,0 +1,2 @@
+.sia-color-picker { display:flex; align-items:center; gap:.75rem; }
+.sia-color-picker input { width:3rem; height:2.5rem; padding:.15rem; border:1px solid var(--sia-border); border-radius:var(--sia-radius); background:var(--sia-background); }

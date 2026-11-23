@@ -1,0 +1,1 @@
+import{bq as e}from"./index-b2DKtdV1.js";const t=Date.now()-600*1e3,r={title:"Dates et heures/RelativeTime",component:e,tags:["autodocs"],args:{value:t,prefix:"Créé",locale:"fr-FR",refreshInterval:6e4},parameters:{layout:"padded"}},o={},s={args:{value:Date.now()-2880*60*1e3,refreshInterval:0}};export{o as Playground,s as Static,r as default};

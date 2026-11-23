@@ -1,0 +1,1 @@
+import{r as o,j as n,P as p}from"./index-b2DKtdV1.js";const c=o.forwardRef(({onValueChange:r,invalid:a,className:t,...e},i)=>n.jsx("input",{...e,ref:i,type:"month",className:p("sia-month-picker",a&&"sia-picker--invalid",t),"aria-invalid":a||void 0,onChange:s=>r?.(s.target.value)}));c.displayName="MonthPicker";export{c as M};

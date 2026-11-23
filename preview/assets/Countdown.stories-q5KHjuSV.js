@@ -1,0 +1,1 @@
+import"./index-b2DKtdV1.js";import{C as t}from"./index-24a9PrzK.js";const n={title:"Dates et heures/Countdown",component:t,tags:["autodocs"],args:{duration:3e5,running:!0},parameters:{layout:"centered"}},a={};export{a as Playground,n as default};

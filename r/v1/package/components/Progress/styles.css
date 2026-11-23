@@ -1,0 +1,101 @@
+.sia-progress { --sia-progress-color: var(--sia-primary); display: grid; gap: .375rem; }
+
+.sia-progress__header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.sia-progress__label { color: var(--sia-muted); font-size: .8rem; }
+.sia-progress__value { color: var(--sia-foreground); font-size: .8rem; font-variant-numeric: tabular-nums; font-weight: 600; }
+
+/* ── Barre ─────────────────────────────────────────────────────────────── */
+
+.sia-progress--bar .sia-progress__track {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--sia-progress-color) 14%, var(--sia-surface));
+}
+
+.sia-progress--bar .sia-progress__indicator {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--sia-progress-color) 80%, white),
+    var(--sia-progress-color)
+  );
+  /* La largeur s'anime : un saut de 20 % à 80 % doit se voir monter, sinon on
+     ne sait pas si la valeur a changé ou si la page a été rechargée. */
+  transition: width var(--sia-duration-slow) var(--sia-easing-standard);
+}
+
+/* Le reflet : une bande claire qui traverse la barre, lentement. Elle ne dit
+   rien de plus que « ça avance », mais c'est précisément ce qu'on regarde. */
+.sia-progress--bar .sia-progress__indicator::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 0.35),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: sia-progress-sheen 2.2s var(--sia-easing-standard) infinite;
+}
+
+.sia-progress--bar.sia-progress--indeterminate .sia-progress__indicator {
+  width: 40%;
+  transition: none;
+  animation: sia-progress-slide 1.4s var(--sia-easing-standard) infinite;
+}
+.sia-progress--bar.sia-progress--indeterminate .sia-progress__indicator::after { animation: none; }
+
+@keyframes sia-progress-sheen {
+  0% { transform: translateX(-100%); }
+  60%, 100% { transform: translateX(100%); }
+}
+@keyframes sia-progress-slide {
+  0% { margin-left: -40%; }
+  100% { margin-left: 100%; }
+}
+
+/* ── Cercle ────────────────────────────────────────────────────────────── */
+
+.sia-progress--circle { position: relative; display: inline-grid; place-items: center; gap: 0; }
+.sia-progress--circle svg { display: block; transform: rotate(-90deg); }
+
+.sia-progress--circle .sia-progress__track {
+  fill: none;
+  stroke: color-mix(in srgb, var(--sia-progress-color) 14%, var(--sia-surface));
+}
+.sia-progress--circle .sia-progress__indicator {
+  fill: none;
+  stroke: var(--sia-progress-color);
+  stroke-linecap: round;
+  transition: stroke-dashoffset var(--sia-duration-slow) var(--sia-easing-standard);
+}
+.sia-progress--circle.sia-progress--indeterminate svg {
+  animation: sia-spin 1.1s linear infinite;
+}
+.sia-progress--circle.sia-progress--indeterminate .sia-progress__indicator {
+  transition: none;
+}
+
+.sia-progress__center {
+  position: absolute;
+  display: grid;
+  gap: 0;
+  justify-items: center;
+  line-height: 1.1;
+  text-align: center;
+}
+.sia-progress--circle .sia-progress__label { font-size: .7rem; }
+
+/* ── Tons ──────────────────────────────────────────────────────────────── */
+
+.sia-progress--neutral { --sia-progress-color: var(--sia-muted); }
+.sia-progress--primary { --sia-progress-color: var(--sia-primary); }
+.sia-progress--info { --sia-progress-color: var(--sia-info); }
+.sia-progress--success { --sia-progress-color: var(--sia-success); }
+.sia-progress--warning { --sia-progress-color: var(--sia-warning); }
+.sia-progress--danger { --sia-progress-color: var(--sia-danger); }

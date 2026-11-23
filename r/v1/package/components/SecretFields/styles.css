@@ -1,0 +1,84 @@
+/* Trois colonnes alignées sur toutes les lignes : nom, valeur, retrait. Le
+   nom est en chasse fixe — MAJUSCULES_ET_SOULIGNÉS se relisent mieux, et une
+   faute de frappe s'y voit. */
+.sia-secrets {
+  container: sia-secrets / inline-size;
+  display: grid;
+  gap: .5rem;
+}
+
+.sia-secrets__head,
+.sia-secrets__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr) 2.5rem;
+  align-items: start;
+  gap: .5rem;
+}
+
+.sia-secrets__head {
+  color: var(--sia-muted);
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+.sia-secrets__key { display: grid; gap: .25rem; min-width: 0; }
+.sia-secrets__key input {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .85rem;
+}
+.sia-secrets__error { color: var(--sia-danger); font-size: .78rem; }
+
+/* Le bouton de retrait a la hauteur d'un champ, pour tomber en face. */
+.sia-secrets__row > .sia-icon-button { width: 2.5rem; height: 2.5rem; }
+
+.sia-secrets__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem .75rem;
+  margin-top: .25rem;
+}
+
+.sia-secrets__templates { display: flex; flex-wrap: wrap; gap: .375rem; }
+.sia-secrets__template {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  height: 1.75rem;
+  padding: 0 .6rem;
+  border: 1px dashed var(--sia-border-strong);
+  border-radius: var(--sia-radius-full);
+  color: var(--sia-muted);
+  background: transparent;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .75rem;
+  cursor: pointer;
+  transition:
+    color var(--sia-duration-fast) var(--sia-easing-standard),
+    border-color var(--sia-duration-fast) var(--sia-easing-standard),
+    background-color var(--sia-duration-fast) var(--sia-easing-standard);
+}
+.sia-secrets__template:hover:not(:disabled) {
+  border-color: var(--sia-primary);
+  color: var(--sia-primary);
+  background: color-mix(in srgb, var(--sia-primary) 6%, transparent);
+}
+.sia-secrets__template:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--sia-primary) 30%, transparent);
+  outline-offset: 2px;
+}
+.sia-secrets__template:disabled { cursor: not-allowed; opacity: .5; }
+
+/* Étroit : le nom au-dessus, la valeur et le retrait en dessous. Chaque
+   ligne se sépare de la suivante par un filet, sans quoi les paires se
+   confondent. */
+@container sia-secrets (max-width: 30rem) {
+  .sia-secrets__head { display: none; }
+  .sia-secrets__row {
+    grid-template-columns: minmax(0, 1fr) 2.5rem;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid var(--sia-border);
+  }
+  .sia-secrets__key { grid-column: 1 / -1; }
+}

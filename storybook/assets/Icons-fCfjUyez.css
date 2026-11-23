@@ -1,0 +1,1 @@
+.sia-container{width:min(100% - 2rem,80rem);margin-inline:auto}.sia-require-session{display:contents}.sia-require-session__pending{display:grid;place-items:center;min-height:12rem;padding:2rem;color:var(--sia-muted);animation:sia-fade-in var(--sia-duration-base) var(--sia-easing-standard)}

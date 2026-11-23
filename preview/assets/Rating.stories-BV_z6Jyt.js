@@ -1,0 +1,1 @@
+import{bn as a}from"./index-b2DKtdV1.js";const e={title:"Saisie/Rating",component:a,tags:["autodocs"],args:{defaultValue:3,max:5,allowClear:!0},parameters:{layout:"centered"}},o={};export{o as Playground,e as default};

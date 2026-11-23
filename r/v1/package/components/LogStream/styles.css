@@ -1,0 +1,152 @@
+/* Un journal se lit en colonnes : heure, niveau, message. La chasse fixe
+   garde les colonnes alignées d'une ligne à l'autre, et un message long
+   passe à la ligne sous lui-même sans déborder sous l'heure. */
+.sia-log-stream {
+  container: sia-log-stream / inline-size;
+  display: grid;
+  gap: .5rem;
+  min-width: 0;
+}
+
+.sia-log-stream__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem;
+}
+
+.sia-log-stream__search { flex: 1 1 12rem; min-width: 0; }
+
+/* Étirés : la bascule, moins haute que les boutons à taille égale, prend la
+   hauteur de la barre et s'aligne sur la recherche. */
+.sia-log-stream__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: .5rem;
+  margin-inline-start: auto;
+}
+
+.sia-log-stream__streaming {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  color: var(--sia-muted);
+  font-size: .8rem;
+}
+
+.sia-log-stream__viewport { position: relative; min-width: 0; }
+
+.sia-log-stream__scroll {
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: .375rem 0;
+  border: 1px solid var(--sia-border);
+  border-radius: var(--sia-radius);
+  color: var(--sia-foreground);
+  background: var(--sia-surface);
+}
+
+.sia-log-stream__scroll:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--sia-primary) 45%, transparent);
+  outline-offset: 2px;
+}
+
+/* Heure et niveau en `ch` : leur largeur ne dépend que du nombre de
+   caractères, jamais du contenu d'une ligne. */
+.sia-log-stream__line {
+  display: grid;
+  grid-template-columns: 8ch 6ch minmax(0, 1fr);
+  column-gap: 1.25ch;
+  padding: .0625rem .75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .8rem;
+  line-height: 1.5;
+}
+
+.sia-log-stream__line:hover { background: color-mix(in srgb, var(--sia-foreground) 4%, transparent); }
+
+.sia-log-stream__time { color: var(--sia-muted); font-variant-numeric: tabular-nums; }
+
+.sia-log-stream__level { font-weight: 600; }
+
+.sia-log-stream__message {
+  min-width: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.sia-log-stream__line--debug .sia-log-stream__level,
+.sia-log-stream__line--debug .sia-log-stream__message { color: var(--sia-muted); }
+.sia-log-stream__line--info .sia-log-stream__level { color: var(--sia-info); }
+.sia-log-stream__line--success .sia-log-stream__level { color: var(--sia-success); }
+.sia-log-stream__line--warn .sia-log-stream__level { color: var(--sia-warning); }
+.sia-log-stream__line--error .sia-log-stream__level { color: var(--sia-danger); }
+
+/* Un fond léger sur ce qui demande l'œil : on retrouve une erreur en
+   parcourant, sans lire chaque niveau. */
+.sia-log-stream__line--warn { background: color-mix(in srgb, var(--sia-warning) 7%, transparent); }
+.sia-log-stream__line--error { background: color-mix(in srgb, var(--sia-danger) 8%, transparent); }
+
+.sia-log-stream__group:not(:first-child) {
+  margin-top: .25rem;
+  border-top: 1px solid var(--sia-border);
+}
+
+.sia-log-stream__group-header.sia-log-stream__group-header {
+  width: 100%;
+  justify-content: flex-start;
+  border-radius: 0;
+  font-weight: 600;
+}
+
+.sia-log-stream__group-count {
+  margin-inline-start: .75ch;
+  color: var(--sia-muted);
+  font-weight: 400;
+}
+
+.sia-log-stream__loading {
+  display: grid;
+  place-items: center;
+  min-height: 8rem;
+  color: var(--sia-muted);
+}
+
+.sia-log-stream__scroll .sia-empty-state { margin: .375rem .75rem; }
+
+/* Posé sur la zone, en bas : il est là où l'œil attend la suite. */
+.sia-log-stream__resume.sia-log-stream__resume {
+  position: absolute;
+  bottom: .75rem;
+  left: 50%;
+  translate: -50% 0;
+  box-shadow: var(--sia-elevation-overlay);
+  animation: sia-log-stream-resume var(--sia-duration-fast) var(--sia-easing-entrance);
+}
+
+@keyframes sia-log-stream-resume {
+  from { opacity: 0; translate: -50% .5rem; }
+}
+
+@container sia-log-stream (max-width: 30rem) {
+  .sia-log-stream__line { grid-template-columns: 8ch minmax(0, 1fr); }
+  /* En étroit, le niveau passe sous l'heure : le message garde la largeur. */
+  .sia-log-stream__level { grid-column: 1; grid-row: 2; font-size: .7rem; }
+  .sia-log-stream__message { grid-column: 2; grid-row: 1 / span 2; }
+  .sia-log-stream__actions { margin-inline-start: 0; }
+  /* Les cinq niveaux se partagent la largeur plutôt que de déborder. */
+  .sia-log-stream__levels.sia-log-stream__levels { display: flex; width: 100%; }
+  .sia-log-stream__levels .sia-toggle-group__item {
+    flex: 1 1 0;
+    min-width: 0;
+    justify-content: center;
+    padding-inline: .25rem;
+    font-size: .75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sia-log-stream__resume.sia-log-stream__resume { animation: none; }
+}

@@ -1,0 +1,46 @@
+name: Documentation
+description: Signaler une page confuse, une faute, un exemple cassé ou un lien mort.
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Merci. Pour la documentation publique, le plus utile est de savoir
+        quelle page est concernée, ce qui bloque, et ce que tu t'attendais à
+        comprendre ou trouver.
+
+  - type: input
+    id: page
+    attributes:
+      label: Page concernée
+      description: URL publique ou titre de la page.
+      placeholder: https://beatjo.github.io/sia-ui-site/guides/ressources
+    validations:
+      required: true
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type de retour
+      options:
+        - Explication confuse
+        - Exemple incorrect
+        - Lien cassé
+        - Faute ou formulation
+        - Information manquante
+    validations:
+      required: true
+
+  - type: textarea
+    id: probleme
+    attributes:
+      label: Ce qui pose problème
+      description: Décris ce que tu as lu, compris, ou ce qui manque.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposition
+    attributes:
+      label: Proposition
+      description: Facultatif. Une formulation, un exemple ou un lien attendu.

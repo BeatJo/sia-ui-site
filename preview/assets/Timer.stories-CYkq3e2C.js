@@ -1,0 +1,1 @@
+import{a0 as t}from"./index-b2DKtdV1.js";const o={title:"Dates et heures/Timer",component:t,tags:["autodocs"],args:{direction:"up",initialValue:0,running:!0},parameters:{layout:"centered"}},n={},a={args:{direction:"down",duration:9e4}};export{a as CountDown,n as CountUp,o as default};
